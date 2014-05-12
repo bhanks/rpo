@@ -14,10 +14,21 @@ class ProductsController < ApplicationController
 
   end
 
+  def edit
+    @product = Product.find(params[:id])
+  end
+
+  def update
+    @product = Product.find(params[:id])
+    @product.update_attributes(product_params)
+    @product.save!
+    redirect_to products_dashboard_index_path
+  end
+
   protected
 
   def product_params
-    params.permit(:title, :subtitle, :description, :display_order, :image, :featured)
+    params[:product].permit(:title, :subtitle, :description, :display_order, :image, :featured, :visible)
   end
 
 end
