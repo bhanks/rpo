@@ -1,0 +1,15 @@
+= form_for @product,:html => {:class => 'form-horizontal', :multipart => true } do |f| 
+
+  - if @product.errors.any?
+    #error_explanation
+      %h4= "#{pluralize(@product.errors.count, "error")} prohibited this event from being saved:"
+      - @product.errors.full_messages.each do |msg|
+        .alert.alert-danger= msg
+  .row
+    .field.form-group.col-md-4
+      = f.text_field :title, class:"form-control", placeholder: "Title"
+    .field.form-group.col-md-7.col-md-offset-1
+      = f.text_field :subtitle, class:"form-control", placeholder: "Subtitle (POST COLONIC SURGE)"
+  .row
+    .field.form-group.col-xs-12
+      = f.submit class: "btn"

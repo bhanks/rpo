@@ -1,4 +1,6 @@
 class ProductsController < ApplicationController
+  layout "dashboard.html.erb"
+
   def index
     @products = Product.all 
   end
@@ -7,6 +9,8 @@ class ProductsController < ApplicationController
     @product = Product.new
   end
   def create
+    @product = Product.new(product_params)
+    redirect_to products_path if @product.save
 
   end
 

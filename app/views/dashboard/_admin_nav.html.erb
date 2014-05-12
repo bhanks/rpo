@@ -1,0 +1,17 @@
+<div class='navbar navbar-inverse navbar-fixed-top' role='navigation'>
+  <div class='container'>
+    <div class='navbar-header'>
+      <a  href="<%= dashboard_index_path %>">Ready Player One:Admin</a>
+    </div>
+    <div class=''>
+      <ul class='nav'>
+        <li class="<%= %>"><%= %></li>
+        <li class="<%= %>"><%= %></li>
+        <li class="<%= %>"><%=  %></li>
+      </ul>
+      <ul class='nav pull-right'>
+        <li><%=link_to "Log out", destroy_user_session_path, :method => :delete%></li>
+      </ul>
+    </div>
+  </div>
+</div>

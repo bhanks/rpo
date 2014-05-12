@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Ready Player One Admin</title>
+  <%= stylesheet_link_tag    "dashboard", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<%= render :partial => 'dashboard/admin_nav', :locals => {:current_user => current_user} %>
+<div class="container content">
+	<%= yield %>
+</div>
+</body>
+</html>
