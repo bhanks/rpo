@@ -6,7 +6,7 @@
       - @product.errors.full_messages.each do |msg|
         .alert.alert-danger= msg
   .row
-    .field.form-group.col-xs-4
+    .field.form-group.col-xs-7
       = f.text_field :title, class:"form-control", placeholder: "Title"
   .row
     .field.form-group.col-xs-7
@@ -22,6 +22,22 @@
     .field.form-group.col-xs-3
       = f.label :featured
       = f.check_box :featured
+  %h4 Price(s)
+  .row
+    = f.fields_for :product_prices do |p|
+      .field.input-group.col-xs-3.amount
+        %span.input-group-addon $
+        = p.number_field :amount, class:"form-control"
+      .field.form-group.col-xs-4
+        = p.text_field :description, placeholder: "Price Description", class: "form-control"
   .row
     .field.form-group.col-xs-12
       = f.submit class: "btn"
+
+:javascript
+  $(document).ready(function(){
+    $('.field_with_errors').each(function(){
+      $(this).addClass("error_text");
+    });
+  
+  });

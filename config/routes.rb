@@ -2,8 +2,10 @@ Rails.application.routes.draw do
 
   devise_for :users
   resources :products do
+    resources :prices
     member do
       get 'toggle_visible'
+      get 'make_featured'
     end
     
   end

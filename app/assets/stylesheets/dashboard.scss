@@ -1,4 +1,12 @@
 @import "bootstrap";
+@import "xs_offsets";
+
+
+.error_text, .field_warning
+{
+  color:red;
+}
+
 
 .container
 {
@@ -8,3 +16,23 @@
 {
   padding-top:60px;
 }
+
+.form-horizontal .form-group
+{
+  margin-left:0px;
+}
+.field_with_errors
+{
+  display:inline-block;
+  width:100%;
+}
+.input-group
+{
+  margin-left:15px;
+  margin-bottom:15px;
+}
+.amount
+{
+  width:292px;
+}
+

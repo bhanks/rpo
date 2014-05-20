@@ -8,11 +8,13 @@
             new_product_path,
             :class => 'btn btn-primary' %>
 </div>
-<%- if flash[:notice] -%>
+<%- if flash[:notice] || flash[:error]-%>
   <div class="span4">  
-    <div class="alert alert-success">
+    <% alert_class= (flash[:error].blank?)? "alert-success" : "alert-danger" %>
+    <% msg = (flash[:error].blank?)? flash[:notice] : flash[:error] %>
+    <div class="alert <%="#{alert_class}" %>">
         <button type="button" class="close" data-dismiss="alert">×</button>
-        <%= flash[:notice] %>
+        <%= msg %>
     </div>
   </div>
 <%- end -%>
@@ -22,7 +24,8 @@
     <tr>
       <th><%= model_class.human_attribute_name(:title) %></th>
       <th>Visible</th>
-      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+      <th>Featured</th>
+      <th style="min-width:475px"><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
 
   </thead>
@@ -31,6 +34,11 @@
       <tr>
         <td class='product-title'><%= link_to product.title, edit_product_path(product) %></td>
         <% if product.visible%>
+          <td><span class="glyphicon glyphicon-ok" style="color:green"></span></td>
+        <% else %>
+          <td><span class="glyphicon glyphicon-remove" style="color:red"></span></td>
+        <% end %>
+        <% if product.featured%>
           <td><span class="glyphicon glyphicon-ok" style="color:green"></span></td>
         <% else %>
           <td><span class="glyphicon glyphicon-remove" style="color:red"></span></td>
@@ -46,6 +54,7 @@
                       :class => 'btn btn-mini btn-danger' %>
           <%= link_to("View", product_path(product), {:target=>"_new", :class=>"btn btn-info"})%>
           <%= link_to("Toggle Visibility", toggle_visible_product_path(product),{:class=>"btn btn-warning"}) %>
+          <%= link_to("Make Featured", make_featured_product_path(product),{:class=>"btn btn-success"}) %>
         </td>
       </tr>
     <% end %>
