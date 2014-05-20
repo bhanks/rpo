@@ -2,6 +2,9 @@ Rails.application.routes.draw do
 
   devise_for :users
   resources :products do
+    member do
+      get 'toggle_visible'
+    end
     
   end
   resources :dashboard do

@@ -6,10 +6,22 @@
       - @product.errors.full_messages.each do |msg|
         .alert.alert-danger= msg
   .row
-    .field.form-group.col-md-4
+    .field.form-group.col-xs-4
       = f.text_field :title, class:"form-control", placeholder: "Title"
-    .field.form-group.col-md-7.col-md-offset-1
+  .row
+    .field.form-group.col-xs-7
       = f.text_field :subtitle, class:"form-control", placeholder: "Subtitle (POST COLONIC SURGE)"
+  .row
+    .field.form-group.col-xs-12
+      = f.label :description
+      = f.cktext_area :description, :id=>"product_description", :ckeditor => {:toolbar => "Custom"}
+  .row
+    .field.form-group.col-xs-3
+      = f.label :visible
+      = f.check_box :visible
+    .field.form-group.col-xs-3
+      = f.label :featured
+      = f.check_box :featured
   .row
     .field.form-group.col-xs-12
       = f.submit class: "btn"

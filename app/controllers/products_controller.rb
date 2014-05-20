@@ -10,7 +10,7 @@ class ProductsController < ApplicationController
   end
   def create
     @product = Product.new(product_params)
-    redirect_to products_path if @product.save
+    redirect_to products_dashboard_index_path if @product.save
 
   end
 
@@ -24,6 +24,22 @@ class ProductsController < ApplicationController
     @product.save!
     redirect_to products_dashboard_index_path
   end
+
+  def destroy
+    @product = Product.find(params[:id])
+    @product.destroy
+    flash[:notice] = "#{@product.title} successfully destroyed."
+    redirect_to products_dashboard_index_path
+  end
+
+  def toggle_visible
+    @product = Product.find(params[:id])
+    @product.visible = !@product.visible
+    @product.save
+    flash[:notice] = @product.visible ? "#{@product.title} is now publicly visible." : "#{@product.title} is no longer publicly visible."
+    redirect_to products_dashboard_index_path
+  end
+
 
   protected
 
