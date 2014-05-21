@@ -23,13 +23,14 @@
       = f.label :featured
       = f.check_box :featured
   %h4 Price(s)
-  .row
-    = f.fields_for :product_prices do |p|
+  = f.fields_for :prices do |p|
+    .row.price
       .field.input-group.col-xs-3.amount
         %span.input-group-addon $
         = p.number_field :amount, class:"form-control"
       .field.form-group.col-xs-4
         = p.text_field :description, placeholder: "Price Description", class: "form-control"
+
   .row
     .field.form-group.col-xs-12
       = f.submit class: "btn"

@@ -11,7 +11,6 @@ class ProductsController < ApplicationController
   end
   def create
     remove_featured if params[:product][:featured].to_i == 1
-    debugger
     @product = Product.new(product_params)
     if @product.save
       redirect_to products_dashboard_index_path 
@@ -57,13 +56,17 @@ class ProductsController < ApplicationController
 
   def make_featured
     @product = Product.find(params[:id])
-    if @product.visible
-      remove_featured 
-      @product.featured = true
-      @product.save
-      flash[:notice] = @product.visible ? "#{@product.title} is now featured." : "#{@product.title} is no longer featured."
+    unless @product.featured
+      if @product.visible
+        remove_featured 
+        @product.featured = true
+        @product.save
+        flash[:notice] = @product.visible ? "#{@product.title} is now featured." : "#{@product.title} is no longer featured."
+      else
+        flash[:error] = "The featured product must be visible."
+      end
     else
-      flash[:error] = "The featured product must be visible."
+      flash[:notice] = "#{@product.title} is already featured."
     end
     redirect_to products_dashboard_index_path
   end
@@ -72,7 +75,7 @@ class ProductsController < ApplicationController
   protected
 
   def product_params
-    params[:product].permit(:title, :subtitle, :description, :display_order, :image, :featured, :visible, :product_prices)
+    params[:product].permit(:title, :subtitle, :description, :display_order, :image, :featured, :visible, prices_attributes: [:amount, :description])
   end
 
   private
