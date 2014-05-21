@@ -22,6 +22,7 @@ class ProductsController < ApplicationController
 
   def edit
     @product = Product.find(params[:id])
+    @product.prices.build if @product.prices.length == 0
   end
 
   def update
