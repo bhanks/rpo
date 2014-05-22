@@ -1,4 +1,4 @@
-= form_for @product,:html => {:class => 'form-horizontal', :multipart => true } do |f| 
+= nested_form_for @product,:html => {:class => 'form-horizontal', :multipart => true } do |f| 
 
   - if @product.errors.any?
     #error_explanation
@@ -23,14 +23,10 @@
       = f.label :featured
       = f.check_box :featured
   %h4 Price(s)
-  = f.fields_for :prices do |p|
-    .row.price
-      .field.input-group.col-xs-3.amount
-        %span.input-group-addon $
-        = p.number_field :amount, class:"form-control"
-      .field.form-group.col-xs-4
-        = p.text_field :description, placeholder: "Price Description", class: "form-control"
-
+  .prices
+    = f.fields_for :prices do |p|
+      = render partial: "price_fields", locals: {p: p}
+  = f.link_to_add "Add Price", :prices, class:"btn btn-primary add-price"
   .row
     .field.form-group.col-xs-12
       = f.submit class: "btn"

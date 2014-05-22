@@ -1,0 +1,7 @@
+.row.price
+  .field.input-group.col-xs-3.amount
+    %span.input-group-addon $
+    = p.number_field :amount, class:"form-control"
+  .field.form-group.col-xs-4
+    = p.text_field :description, placeholder: "Price Description", class: "form-control"
+  = p.link_to_remove "Remove", class:"btn btn-danger remove-price"

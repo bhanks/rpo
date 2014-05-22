@@ -76,7 +76,7 @@ class ProductsController < ApplicationController
   protected
 
   def product_params
-    params[:product].permit(:title, :subtitle, :description, :display_order, :image, :featured, :visible, prices_attributes: [:amount, :description])
+    params[:product].permit(:title, :subtitle, :description, :display_order, :image, :featured, :visible, prices_attributes: [:amount, :description, :id, :_destroy])
   end
 
   private
