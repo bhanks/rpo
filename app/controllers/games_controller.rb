@@ -1,0 +1,3 @@
+class GamesController < ProductsController
+
+end
