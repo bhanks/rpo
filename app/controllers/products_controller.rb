@@ -1,12 +1,18 @@
 class ProductsController < ApplicationController
   layout "dashboard.html.erb"
+  # http://stackoverflow.com/questions/3025784/rails-layouts-per-action
+
+  CONTROLLER_TO_MODEL = {
+    "games"=> "Game"
+  }
 
   def index
     @products = Product.all 
   end
 
   def new
-    @product = Product.new
+    type = (params[:controller] == 'products')? nil : CONTROLLER_TO_MODEL[params[:controller]]
+    @product = Product.new(type: type)
     @product.prices.build
   end
   def create

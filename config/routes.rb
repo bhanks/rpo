@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
   devise_for :users
+  resources :games
   resources :products do
     resources :prices
     member do
@@ -12,6 +13,7 @@ Rails.application.routes.draw do
   resources :dashboard do
     collection do
       get 'products'
+      get 'games'
     end
   end
 
