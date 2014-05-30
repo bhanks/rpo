@@ -22,6 +22,14 @@
     .field.form-group.col-xs-3
       = f.label :featured
       = f.check_box :featured
+    .field.form-group.col-xs-3
+      = f.label :image
+      = f.file_field :image
+    .field.form-group.col-xs-3
+      - unless @product.image.blank?
+        %a.btn.btn-primary{href:"#", data:{ toggle:"modal",target:"#currentImage" }} View Current Image
+        = render partial: "image_modal", locals: {product: @product}
+      
   %h4 Price(s)
   .prices
     = f.fields_for :prices do |p|

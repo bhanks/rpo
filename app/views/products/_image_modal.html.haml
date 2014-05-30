@@ -1,0 +1,10 @@
+#currentImage.modal.fade{tabindex: "-1", role: "dialog", aria:{ labelledby: "currentImageLabel", hidden: "true"}}
+  .modal-dialog
+    .modal-content
+      .modal-header
+        %button.close{type:"button", data:{dismiss:"modal"}, aria:{hidden:"true"}} &times;
+        %h4#currentImageLabel.modal-title= "Current Image for #{product.title}"
+      .modal-body
+        %img{src: product.image.url}
+      .modal-footer
+        %button.btn.btn-default{type:"button", data:{dismiss:"modal"}}Close
