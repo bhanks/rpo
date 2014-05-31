@@ -1,0 +1,3 @@
+class BeersController < ProductsController
+
+end

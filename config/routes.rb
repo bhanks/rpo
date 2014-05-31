@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
   devise_for :users
-  resources :games
+
   resources :products do
     resources :prices
     member do
@@ -10,10 +10,33 @@ Rails.application.routes.draw do
     end
     
   end
+
   resources :dashboard do
     collection do
-      get 'products'
       get 'games'
+      get 'beers'
+      get 'pizzas'
+    end
+  end
+  resources :games do
+    member do
+      get 'toggle_visible'
+      get 'make_featured'
+    end
+    
+  end
+  
+  resources :beers do
+    member do
+      get 'toggle_visible'
+      get 'make_featured'
+    end
+  end
+
+  resources :pizzas do
+    member do
+      get 'toggle_visible'
+      get 'make_featured'
     end
   end
 

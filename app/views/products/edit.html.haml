@@ -1,5 +1,5 @@
-%h1.col-md-12 Editing Product
+%h1.col-md-12= "Editing #{@product.class.name}"
 %h2.col-xs-12
-  = link_to 'Back', products_dashboard_index_path,:class=>"btn btn-primary" 
+  = link_to 'Back', @url_helper.send("#{@type.downcase.pluralize}_dashboard_index_path"),:class=>"btn btn-primary" 
 
 = render 'form'

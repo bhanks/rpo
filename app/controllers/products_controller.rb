@@ -2,24 +2,23 @@ class ProductsController < ApplicationController
   layout "dashboard.html.erb"
   # http://stackoverflow.com/questions/3025784/rails-layouts-per-action
 
-  CONTROLLER_TO_MODEL = {
-    "games"=> "Game"
-  }
+  before_filter :set_type
 
   def index
     @products = Product.all 
   end
 
   def new
-    type = (params[:controller] == 'products')? nil : CONTROLLER_TO_MODEL[params[:controller]]
-    @product = Product.new(type: type)
+    #type = Product::CONTROLLER_TO_TYPE[params[:controller]]
+    @product = @type.constantize.new
     @product.prices.build
   end
+
   def create
-    remove_featured if params[:product][:featured].to_i == 1
-    @product = Product.new(product_params)
+    remove_featured if params[@type.downcase.to_sym][:featured].to_i == 1
+    @product = @type.constantize.new(product_params)
     if @product.save
-      redirect_to products_dashboard_index_path 
+      redirect_to @url_helper.send("#{@type.downcase.pluralize.to_sym}_dashboard_index_path") 
     else
       render action: "edit", layout: "dashboard"
     end
@@ -32,11 +31,11 @@ class ProductsController < ApplicationController
   end
 
   def update
-    remove_featured if params[:product][:featured].to_i == 1
+    remove_featured if params[@type.downcase.to_sym][:featured].to_i == 1
     @product = Product.find(params[:id])
     @product.update_attributes(product_params)
     if @product.save
-      redirect_to products_dashboard_index_path 
+      redirect_to @url_helper.send("#{@type.pluralize.downcase.to_sym}_dashboard_index_path") 
     else
       render action: "edit", layout: "dashboard"
     end
@@ -45,8 +44,9 @@ class ProductsController < ApplicationController
   def destroy
     @product = Product.find(params[:id])
     @product.destroy
-    flash[:notice] = "#{@product.title} successfully destroyed."
-    redirect_to products_dashboard_index_path
+    flash[:notice] = "#{@product.title} successfully destroyed." unless @product.errors
+    flash[:error] = @product.errors.messages.values.flatten.first
+    redirect_to @url_helper.send("#{@type.pluralize.downcase.to_sym}_dashboard_index_path")
   end
 
   def toggle_visible
@@ -58,7 +58,7 @@ class ProductsController < ApplicationController
     else
       flash[:error] = "The featured product must remain visible."
     end
-    redirect_to products_dashboard_index_path
+    redirect_to @url_helper.send("#{@type.downcase.pluralize}_dashboard_index_path")
   end
 
   def make_featured
@@ -75,23 +75,27 @@ class ProductsController < ApplicationController
     else
       flash[:notice] = "#{@product.title} is already featured."
     end
-    redirect_to products_dashboard_index_path
+    redirect_to @url_helper.send("#{@type.downcase.pluralize}_dashboard_index_path")
   end
 
 
   protected
 
   def product_params
-    params[:product].permit(:title, :subtitle, :description, :display_order, :image, :featured, :visible, prices_attributes: [:amount, :description, :id, :_destroy])
+    params[@type.downcase.to_sym].permit(:title, :subtitle, :description, :display_order, :image, :featured, :visible, prices_attributes: [:amount, :description, :id, :_destroy])
   end
 
   private
   def remove_featured
-    @old_featured = Product.where(featured: true).first
+    @old_featured = Product.where(featured: true, type: @type).first
     if @old_featured
       @old_featured.featured = false
       @old_featured.save
     end
+  end
+
+  def set_type
+    @type = Product::CONTROLLER_TO_TYPE[env["action_controller.instance"].class.to_s] 
   end
 
 end

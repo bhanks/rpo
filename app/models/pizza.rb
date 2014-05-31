@@ -1,0 +1,3 @@
+class Pizza < Product
+
+end

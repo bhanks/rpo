@@ -4,7 +4,14 @@ class Product < ActiveRecord::Base
   validate :featured_must_be_visible
   validates :title, presence:true
   before_destroy :remove_image
+  before_destroy :prevent_feature_delete
   mount_uploader :image
+
+  CONTROLLER_TO_TYPE = {
+    "GamesController"=> "Game",
+    "BeersController"=> "Beer",
+    "PizzasController"=> "Pizza"
+  }
 
   def featured_must_be_visible
     if featured && !visible
@@ -15,4 +22,12 @@ class Product < ActiveRecord::Base
   def remove_image
     self.remove_image!
   end
+
+  protected
+
+  def prevent_feature_delete
+    errors.add(:feature, 'Featured product must exist.') if self.featured
+    !self.featured
+  end
+
 end
