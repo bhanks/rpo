@@ -1,0 +1,6 @@
+= form_for @game, :html => {:class => 'form-horizontal'} do |form|
+  - if @game.errors.any?
+    #error_explanation
+      %h4= "#{pluralize(@game.errors.count, "error")} prohibited this event from being saved:"
+      - @product.errors.full_messages.each do |msg|
+        .alert.alert-danger= msg
