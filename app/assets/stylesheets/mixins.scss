@@ -1,0 +1,13 @@
+@mixin cathode($height)
+{
+  height:$height;
+  width:$height * (4/3);
+  border-radius: 50%/ 15%;
+}
+
+.tester
+{
+  @include cathode(300px);
+  background-color:black;
+  margin: 50px auto; 
+}

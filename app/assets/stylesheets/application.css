@@ -11,14 +11,23 @@
  * file per style scope.
  *
  *= require bootstrap
+ *= require mixins
  *= require_self
+ *= require main
  */
+
+body
+{
+  font-family:Menlo;
+  background-color:$magazine;
+}
+ul
+{
+  margin-bottom:0px;
+  padding:0;
+}
 
 .container
 {
   width:970px;
-}
-.content
-{
-  margin-top:60px;
 }

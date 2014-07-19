@@ -1,0 +1,28 @@
+$magazine: #FFF8E9;
+body
+{
+  font-family:Menlo;
+  background-color:$magazine;
+}
+.banner
+{
+  background-color:black;
+  color:white;
+}
+
+.content
+{
+
+}
+.image-drawer
+{
+  margin:0 auto;
+  text-align:center;
+  img
+  {
+    width:250px;
+    height:500px;
+    background-color:black;
+    margin:0 20px
+  }
+}
