@@ -60,13 +60,33 @@ body
 }
 .image-drawer
 {
-  margin:0 auto;
-  text-align:center;
-  img
-  {
-    width:250px;
-    height:500px;
-    background-color:black;
-    margin:0 20px
+  /*margin:0 auto;*/
+  margin-bottom:50px;
+}
+.featured
+{
+  display:inline-block;
+  height:400px;
+  background-size:250px 400px;
+  background-repeat:no-repeat;
+  background-position:center;
+  background-image:url('http://placekitten.com/g/250/400');
+  .title{
+    background-color:rgba(0,0,0,.7);
+    transform: rotate(-90deg);
+    display: inline-block;
+    height: 250px;
+    width: 400px;
+    position: relative;
+    right: 53px;
+    top: 75px;
+    color: $red;
+    text-align: center;
+    font-size: 40px;
+    .active
+    {
+      visibility:hidden;
+    }
   }
 }
+
