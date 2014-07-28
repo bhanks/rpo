@@ -1,13 +1,26 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Rpo</title>
+  <title>Forbidden Planet Pizzeria And Video Arcade</title>
+  <link rel="icon" type="image/png" href="/assets/favicon.ico"/>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-
+  <div class="banner">
+    <div class="logo">
+      <img class="logo-text" src="/assets/fpt.png"/>
+      <img class="logo-qmark" style="height:200px;" src="/assets/logo.gif"/>
+    </div>
+    <ul>
+      <li><span class="chev">&rsaquo;</span><a>Pizza</a></li>
+      <li><span class="chev">&rsaquo;</span><a>Beer</a></li>
+      <li><span class="chev">&rsaquo;</span><a>Games</a></li>
+      <li><span class="chev">&rsaquo;</span><a>News</a></li>
+      <li><span class="chev">&rsaquo;</span><a>About</a></li>
+    </ul>
+  </div>
 <%= yield %>
 
 </body>

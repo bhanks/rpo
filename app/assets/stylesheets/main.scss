@@ -1,13 +1,57 @@
+@import "colors";
 $magazine: #FFF8E9;
+
 body
 {
   font-family:Menlo;
   background-color:$magazine;
 }
+.logo-text
+{
+  position:relative;
+  right:40px;
+}
 .banner
 {
+  padding-top:30px;
   background-color:black;
-  color:white;
+  color:$grey;
+  text-align:center;
+  a
+  {
+    color:$grey;
+  }
+  ul
+  {
+    list-style-type:none;
+    margin-top:25px;
+    margin-bottom:15px;
+    font-size:26px;
+    position:relative;
+    right:25px;
+    li
+    {
+      display:inline-block;
+      margin-left:30px;
+      .chev
+      {
+        color:black;
+      }
+      &:hover
+      {
+        .chev{
+          color:$grey;
+        }
+        a
+        {
+          text-decoration:none;
+          cursor:pointer;
+        }
+      }
+
+    }
+
+  }
 }
 
 .content
