@@ -20,36 +20,29 @@ body
   a
   {
     color:$grey;
+    &:hover
+    {
+      .chev{
+        color:$grey;
+      }
+      a
+      {
+        text-decoration:none;
+        cursor:pointer;
+      }
+    }
   }
-  ul
+  .chev
   {
-    list-style-type:none;
+    color:black;
+  }
+  .info
+  {
     margin-top:25px;
     margin-bottom:15px;
-    font-size:26px;
-    position:relative;
-    right:25px;
-    li
-    {
-      display:inline-block;
-      margin-left:30px;
-      .chev
-      {
-        color:black;
-      }
-      &:hover
-      {
-        .chev{
-          color:$grey;
-        }
-        a
-        {
-          text-decoration:none;
-          cursor:pointer;
-        }
-      }
+    font-size:19px;
+    
 
-    }
 
   }
 }
@@ -83,6 +76,10 @@ body
     color: $red;
     text-align: center;
     font-size: 40px;
+    &:hover
+    {
+      cursor:pointer;
+    }
   }
 }
 .split
@@ -102,6 +99,9 @@ body
   border-width: 10px 12.5px 0 12.5px;
   border-color: $magazine transparent transparent transparent;
   position:relative;
-  left:120px;
+  left:13.5%;
 }
-
+.close
+{
+  font-size:30px;
+}

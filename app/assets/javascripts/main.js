@@ -11,5 +11,9 @@ $(document).ready(function(){
         ,function(){})
     });
   });
+  
+  $('.close').click(function(){
+    $(".split").slideUp();
+  });
 
 });
