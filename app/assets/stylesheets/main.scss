@@ -17,21 +17,6 @@ body
   background-color:black;
   color:$grey;
   text-align:center;
-  a
-  {
-    color:$grey;
-    &:hover
-    {
-      .chev{
-        color:$grey;
-      }
-      a
-      {
-        text-decoration:none;
-        cursor:pointer;
-      }
-    }
-  }
   .chev
   {
     color:black;
@@ -41,6 +26,23 @@ body
     margin-top:25px;
     margin-bottom:15px;
     font-size:19px;
+    a
+    {
+      color:$grey;
+      &:hover
+      {
+          text-decoration:none;
+          cursor:pointer;
+      }
+    }
+    .item
+    {
+      &:hover{
+        .chev{
+          color:$grey;
+        }
+      }
+    }
     
 
 
@@ -79,6 +81,24 @@ body
     &:hover
     {
       cursor:pointer;
+    }
+  }
+
+}
+@media (max-width: 992px) {
+  .featured
+  {
+    height:300px;
+    background-size:200px 300px;
+    background-repeat:no-repeat;
+    background-position:center;
+    background-image:url('http://placekitten.com/g/200/300');
+    .title
+    {
+      height:200px;
+      width:300px;
+      right:40px;
+      top:50px;
     }
   }
 }
