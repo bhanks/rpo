@@ -95,6 +95,16 @@ body
   }
 
 }
+.headers h2
+{
+  text-align:center;
+}
+.spacers div
+{
+  display:block;
+  height:1px;
+  background-color:black;
+}
 @media (max-width: 992px) {
   .featured
   {
