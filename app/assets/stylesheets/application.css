@@ -32,3 +32,9 @@ ul
 {
   max-width:970px;
 }
+
+a:hover
+{
+  cursor:pointer;
+  text-decoration:none;
+}
