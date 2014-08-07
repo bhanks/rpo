@@ -10,7 +10,8 @@ class Product < ActiveRecord::Base
   CONTROLLER_TO_TYPE = {
     "GamesController"=> "Game",
     "BeersController"=> "Beer",
-    "PizzasController"=> "Pizza"
+    "PizzasController"=> "Pizza",
+    "ProductsController"=>"Product"
   }
 
   def featured_must_be_visible

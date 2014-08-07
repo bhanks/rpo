@@ -78,6 +78,12 @@ class ProductsController < ApplicationController
     redirect_to @url_helper.send("#{@type.downcase.pluralize}_dashboard_index_path")
   end
 
+  def display_order
+    @products = Product.order(:display_order).to_a
+  end
+
+  def update_display_order
+  end
 
   protected
 

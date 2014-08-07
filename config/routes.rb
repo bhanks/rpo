@@ -9,6 +9,9 @@ Rails.application.routes.draw do
       get 'make_featured'
     end
     
+    collection do
+      get 'display_order'
+    end
   end
 
   resources :dashboard do
