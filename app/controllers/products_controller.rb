@@ -79,10 +79,16 @@ class ProductsController < ApplicationController
   end
 
   def display_order
-    @products = Product.order(:display_order).to_a
+    @products = Product.where(type:@type).order(:display_order).to_a
   end
 
   def update_display_order
+    params[:product].each_pair do |id, value|
+      product = Product.find(id) 
+      product.display_order = value    
+      product.save!             
+    end
+    redirect_to dashboard_index_path, notice: 'Lineup Order was successfully updated.'
   end
 
   protected

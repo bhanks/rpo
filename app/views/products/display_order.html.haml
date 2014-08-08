@@ -1,5 +1,9 @@
 %h1="#{@type.pluralize} Display Order"
 
-=form_for @products do |f|
-  -@products.each do |product|
-    =product.title
+=form_tag(controller:params[:controller], action:"update_display_order") do |f|
+  .display-order.col-xs-6
+    -@products.each do |product|
+      .well.well-sm
+        %input.display-order{:type=>"hidden", :name=>"product[#{product.id}]", :id=>"product_#{product.id}", :value=>product.display_order}
+        =product.title
+    %input{type:"submit", class:"btn btn-primary"}

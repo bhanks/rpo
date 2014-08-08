@@ -11,6 +11,7 @@ Rails.application.routes.draw do
     
     collection do
       get 'display_order'
+      post 'update_display_order'
     end
   end
 
@@ -27,6 +28,10 @@ Rails.application.routes.draw do
       get 'make_featured'
       get 'set_high_score'
     end
+    collection do
+      get 'display_order'
+      post 'update_display_order'
+    end
     
   end
   
@@ -35,12 +40,20 @@ Rails.application.routes.draw do
       get 'toggle_visible'
       get 'make_featured'
     end
+    collection do
+      get 'display_order'
+      post 'update_display_order'
+    end
   end
 
   resources :pizzas do
     member do
       get 'toggle_visible'
       get 'make_featured'
+    end
+    collection do
+      get 'display_order'
+      post 'update_display_order'
     end
   end
 
