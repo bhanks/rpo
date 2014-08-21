@@ -108,6 +108,13 @@ body
   margin:0 auto;
   box-shadow:0 0 6px blue;
 }
+.horizontal-light
+{
+  display:block;
+  width:1px;
+  background-color:red;
+  box-shadow:6px 0 0 red;
+}
 .information
 {
   margin-bottom:25px;
@@ -126,6 +133,12 @@ body
 {
   height:125px;
   background-color:black;
+  position:fixed;
+  bottom:0px;
+}
+.mobile-features
+{
+  text-align:center;
 }
 @media (max-width: 992px) {
   .featured

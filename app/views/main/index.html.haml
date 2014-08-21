@@ -1,10 +1,10 @@
-.container
+.container.hidden-xs
   .content.features
     .image-drawer.row
       .col-sm-4.col-md-4.col-xs-12.featured.pizza{data:{arrow:"13.5%",content:"pizza",shift:"0px"}}
       .col-sm-4.col-md-4.col-xs-12.featured.beer{data:{arrow:"49%",content:"beer",shift:"245px"}}
       .col-sm-4.col-md-4.col-xs-12.featured.game{data:{arrow:"84.5%",content:"game",shift:"490px"}}
-.split
+.split.hidden-xs
   .container
     .col-md-12
       .arrow
@@ -12,9 +12,9 @@
       .row.pizza
         .close
           &times;
-        .col-md-4.col-sm-4
+        .col-md-4.col-sm-4.col-xs-12
           %img{src:"http://placekitten.com/g/200/200"}
-        .col-md-8.col-sm-8
+        .col-md-8.col-sm-8.col-xs-12
           .row.name Pizza Pizza Pizza
           .row
             .col-md-3.col-sm-3.separator
@@ -25,7 +25,7 @@
         .close
           &times;
         .col-md-4.col-sm-4
-          %img{src:"http://placekitten.com/g/200/150"}
+          %img{src:"http://placekitten.com/g/200/200"}
         .col-md-8.col-sm-8
           .row.name Beer Beer Beer
           .row
@@ -44,6 +44,21 @@
             .col-md-3.col-sm-3.separator
           .row.description
             %p Some Text will go here
+.container.mobile-features.hidden-sm.hidden-md.hidden-lg
+  .row
+    %h3 Featured Beer:
+    %h3 New Belgium Ranger
+    .col-xs-12.feature-image
+      %img{src:"http://placekitten.com/g/150/150"}
+    .col-xs-12.feature-text
+      .light
+      .description
+        %p Some Text will go here
+     
+  .row
+    %h2 Featured Game
+  .row
+    %h2 Featured Pizza
 .container.information
   .content
     .row.headers
@@ -68,8 +83,6 @@
           %p 111 S Dubuque St
           %p Iowa City, IA 52240
           %a Map
-       
-.sitemap
 
 
 
