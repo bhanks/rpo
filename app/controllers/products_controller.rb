@@ -88,7 +88,7 @@ class ProductsController < ApplicationController
       product.display_order = value    
       product.save!             
     end
-    redirect_to dashboard_index_path, notice: 'Lineup Order was successfully updated.'
+    redirect_to dashboard_index_path, notice: "Lineup order for #{@type.pluralize} was successfully updated."
   end
 
   protected
