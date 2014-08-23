@@ -57,7 +57,7 @@
           <%= link_to("Toggle Visibility", @url_helper.send("toggle_visible_#{path_type}_path",product),{:class=>"btn btn-warning"}) %>
           <%= link_to("Make Featured", @url_helper.send("make_featured_#{path_type}_path",product),{:class=>"btn btn-success"}) %>
           <% if product.type == "Game" %>
-            <%= link_to("Set High Scores", set_high_score_game_path(product), {:class=>"btn btn-info"}) %>
+            <%= link_to("Set High Scores", set_high_scores_game_path(product), {:class=>"btn btn-info"}) %>
           <% end %>
         </td>
       </tr>

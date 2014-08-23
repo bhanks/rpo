@@ -1,0 +1,21 @@
+.col-xs-12{style:"margin-bottom:20px"}
+  %h2="Scores for #{@game.title}"
+= form_for @game,:url=>{controller:"games",action:"update_scores"}, :html => {:class => 'scores form-horizontal'} do |f|
+  -#- if @scores.errors.any?
+    -##error_explanation
+      -#%h4= "#{pluralize(@scores.errors.count, "error")} prohibited this event from being saved:"
+      -#- @scores.errors.full_messages.each do |msg|
+        -#.alert.alert-danger= msg
+  - counter = 1
+  = f.fields_for :high_scores do |hs|
+    .form-group
+      .col-xs-1
+        %label.score="#{counter}."
+      .field.col-xs-2
+        - counter+=1
+        = hs.text_field :name, placeholder: "Initials", class:"form-control", onkeyup:"javascript:this.value=this.value.toUpperCase();",style:"text-transform:uppercase",maxlength:3
+      .field.form-group.col-xs-3
+        = hs.number_field :score, class:"form-control"
+  .row
+    .field.form-group.col-xs-12
+      = f.submit class: "btn",value:"Update Scores"

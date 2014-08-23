@@ -26,7 +26,8 @@ Rails.application.routes.draw do
     member do
       get 'toggle_visible'
       get 'make_featured'
-      get 'set_high_score'
+      get 'set_high_scores'
+      patch 'update_scores'
     end
     collection do
       get 'display_order'
