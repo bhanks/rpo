@@ -21,6 +21,7 @@ class GamesController < ProductsController
 
   def product_params
     params[:game].permit(high_scores_attributes: [:score, :name, :id, :_destroy])
+    super
   end
 
 end
