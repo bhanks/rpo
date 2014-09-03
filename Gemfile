@@ -15,6 +15,7 @@ gem 'rmagick', :require => 'RMagick'
 #gem 'mini_magick'
 gem 'carrierwave'
 gem 'font-awesome-rails'
+gem 'jcrop-rails-v2'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .js.coffee assets and views
