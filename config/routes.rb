@@ -28,6 +28,7 @@ Rails.application.routes.draw do
       get 'make_featured'
       get 'set_high_scores'
       patch 'update_scores'
+      get 'crop'
     end
     collection do
       get 'display_order'
