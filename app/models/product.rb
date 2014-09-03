@@ -5,7 +5,7 @@ class Product < ActiveRecord::Base
   validates :title, presence:true
   before_destroy :remove_image
   before_destroy :prevent_feature_delete
-  mount_uploader :image
+  mount_uploader :image, ImageUploader
 
   CONTROLLER_TO_TYPE = {
     "GamesController"=> "Game",
