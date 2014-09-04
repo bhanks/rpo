@@ -19,7 +19,7 @@ class ProductsController < ApplicationController
     @product = @type.constantize.new(product_params)
     if @product.save
       if params[@type.downcase.to_sym][:image]
-        img = ::Magick::Image::read(@product.image).first
+        img = ::Magick::Image::read(@product.image.path).first
         width = img.columns
         height = img.rows
         unless(height <= 400 || width <= 400)
@@ -48,7 +48,21 @@ class ProductsController < ApplicationController
     @product = Product.find(params[:id])
     @product.update_attributes(product_params)
     if @product.save
-      redirect_to @url_helper.send("#{@type.pluralize.downcase.to_sym}_dashboard_index_path") 
+      #redirect_to @url_helper.send("#{@type.pluralize.downcase.to_sym}_dashboard_index_path") 
+      if params[@type.downcase.to_sym][:image]
+        img = ::Magick::Image::read(@product.image.path).first
+        width = img.columns
+        height = img.rows
+        unless(height <= 400 || width <= 400)
+          redirect_to @url_helper.send("crop_#{@type.downcase}_path",id:@product.id)
+        else
+          @product.remove_image!
+          @product.save!
+          @product.errors.add :image, "must be at least 400 x 400"
+          render action: "edit", layout: "dashboard"
+        end
+      #redirect_to @url_helper.send("#{@type.downcase.pluralize.to_sym}_dashboard_index_path") 
+      end
     else
       render action: "edit", layout: "dashboard"
     end
@@ -102,6 +116,10 @@ class ProductsController < ApplicationController
       product.save!             
     end
     redirect_to dashboard_index_path, notice: "Lineup order for #{@type.pluralize} was successfully updated."
+  end
+
+  def crop
+    @product = Product.find(params[:id])
   end
 
   protected
