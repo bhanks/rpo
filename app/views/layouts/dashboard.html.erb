@@ -10,16 +10,6 @@
 <body>
 <%= render :partial => 'dashboard/admin_nav', :locals => {:current_user => current_user} %>
 <div class="container content">
-<%- if flash[:notice] || flash[:error]-%>
-  <div class="span4">  
-    <% alert_class= (flash[:error].blank?)? "alert-success" : "alert-danger" %>
-    <% msg = (flash[:error].blank?)? flash[:notice] : flash[:error] %>
-    <div class="alert <%="#{alert_class}" %>">
-        <button type="button" class="close" data-dismiss="alert">×</button>
-        <%= msg %>
-    </div>
-  </div>
-<%- end -%>
 	<%= yield %>
 </div>
 </body>

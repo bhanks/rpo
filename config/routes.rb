@@ -29,6 +29,7 @@ Rails.application.routes.draw do
       get 'set_high_scores'
       patch 'update_scores'
       get 'crop'
+      patch 'make_crop'
     end
     collection do
       get 'display_order'
@@ -41,6 +42,8 @@ Rails.application.routes.draw do
     member do
       get 'toggle_visible'
       get 'make_featured'
+      get 'crop'
+      patch 'make_crop'
     end
     collection do
       get 'display_order'
@@ -52,6 +55,8 @@ Rails.application.routes.draw do
     member do
       get 'toggle_visible'
       get 'make_featured'
+      get 'crop'
+      patch 'make_crop'
     end
     collection do
       get 'display_order'

@@ -5,7 +5,7 @@
   %h4 Minimum Size: 400x400
   #selection Current Selection (w X h):
   .pad{:style=>"margin-bottom:50px"}
-    =form_for @product do
+    =form_for @product, :url=>{controller:@type.downcase.pluralize,action:"make_crop"} do
       =hidden_field(:crop, :x1)
       =hidden_field(:crop, :y1)
       =hidden_field(:crop, :x2)

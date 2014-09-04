@@ -6,6 +6,7 @@ class Product < ActiveRecord::Base
   before_destroy :remove_image
   before_destroy :prevent_feature_delete
   mount_uploader :image, ImageUploader
+  attr_accessor :crop_x, :crop_y, :crop_h, :crop_w
 
   CONTROLLER_TO_TYPE = {
     "GamesController"=> "Game",

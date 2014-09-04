@@ -23,7 +23,7 @@ class ProductsController < ApplicationController
         width = img.columns
         height = img.rows
         unless(height <= 400 || width <= 400)
-          redirect_to @url_helper.send("crop_#{@type.downcase}_path")
+          redirect_to @url_helper.send("crop_#{@type.downcase}_path",id:@product.id)
         else
           @product.remove_image!
           @product.save!
@@ -48,7 +48,6 @@ class ProductsController < ApplicationController
     @product = Product.find(params[:id])
     @product.update_attributes(product_params)
     if @product.save
-      #redirect_to @url_helper.send("#{@type.pluralize.downcase.to_sym}_dashboard_index_path") 
       if params[@type.downcase.to_sym][:image]
         img = ::Magick::Image::read(@product.image.path).first
         width = img.columns
@@ -56,12 +55,9 @@ class ProductsController < ApplicationController
         unless(height <= 400 || width <= 400)
           redirect_to @url_helper.send("crop_#{@type.downcase}_path",id:@product.id)
         else
-          @product.remove_image!
-          @product.save!
           @product.errors.add :image, "must be at least 400 x 400"
-          render action: "edit", layout: "dashboard"
+          render action: "edit", :layout => "dashboard"
         end
-      #redirect_to @url_helper.send("#{@type.downcase.pluralize.to_sym}_dashboard_index_path") 
       end
     else
       render action: "edit", layout: "dashboard"
@@ -120,6 +116,24 @@ class ProductsController < ApplicationController
 
   def crop
     @product = Product.find(params[:id])
+  end
+
+  def make_crop
+    @product = Product.find(params[:id])
+    @product.crop_x = params[:crop][:x1]
+    @product.crop_y = params[:crop][:y1]
+    @product.crop_w = params[:crop][:w]
+    @product.crop_h = params[:crop][:h]
+    if @product.image.crop && @product.save
+      @product.image.recreate_versions!
+      flash[:notice] = "Crop successful."
+      redirect_to @url_helper.send("#{@type.pluralize.downcase.to_sym}_dashboard_index_path")
+    else
+      redirect_to @url_helper.send("crop_#{@type.downcase}_path",id:@product.id)
+    end
+      
+    
+
   end
 
   protected
