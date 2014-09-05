@@ -124,8 +124,8 @@ class ProductsController < ApplicationController
     @product.crop_y = params[:crop][:y1]
     @product.crop_w = params[:crop][:w]
     @product.crop_h = params[:crop][:h]
-    if @product.image.crop && @product.save
-      @product.image.recreate_versions!
+    if @product.save
+      #@product.image.recreate_versions!
       flash[:notice] = "Crop successful."
       redirect_to @url_helper.send("#{@type.pluralize.downcase.to_sym}_dashboard_index_path")
     else

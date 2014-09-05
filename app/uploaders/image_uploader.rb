@@ -44,9 +44,14 @@ class ImageUploader < CarrierWave::Uploader::Base
   # end
 
   version :small do
-    #process :crop
+    process :crop
     process resize_to_fit:  [200,200]
   end 
+
+  version :normal do
+    process :crop
+    process resize_to_fit: [400,400]
+  end
   
 
   # Add a white list of extensions which are allowed to be uploaded.
@@ -63,7 +68,7 @@ class ImageUploader < CarrierWave::Uploader::Base
         w = model.crop_w.to_i
         h = model.crop_h.to_i
         img.crop!(x,y,w,h)
-        img.resize_to_fit!(400,400)
+        #img.resize_to_fit!(400,400)
       end
     end 
   end
