@@ -1,6 +1,13 @@
 class PostsController < ApplicationController
   layout :resolve_layout
   
+
+  def show
+    @post = Post.friendly.find(params[:id])
+    @previous = Post.where("created_at < ?", @post.created_at).order("created_at DESC").limit(1).first
+    @next = Post.where("created_at > ?", @post.created_at).order("created_at ASC").limit(1).first
+  end
+
   def new
     @post = Post.new
   end 

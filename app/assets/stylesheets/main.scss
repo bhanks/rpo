@@ -5,6 +5,7 @@ body
 {
   font-family:Menlo;
   background-color:$magazine;
+  min-width:500px;
 }
 .logo-text
 {
@@ -197,5 +198,61 @@ body
 {
   padding-bottom:10px;
   padding-top:25px;
+}
+
+
+.news
+{
+  padding-bottom:50px;
+  h1, h3
+  {
+    text-align:center;
+  }
+
+  .post_body
+  {
+    margin:35px 0px;
+  }
+
+  .next a.next-text, a.prev-text
+  {
+    display: inline-block;
+    position: relative;
+    bottom: 7px;
+  }
+
+  .previous a.prev-arrow
+  {
+    -webkit-mask-image:url('/assets/prev-mask.png');
+    -webkit-mask-repeat:no-repeat;
+    line-height:26px;
+    display: inline-block;
+    height: 25px;
+    width: 75px;
+    background-image: url('/assets/pointer-grad.png');
+
+  }
+  
+
+  .next a.next-arrow
+  {
+    -webkit-mask-image:url('/assets/next-neutral.png');
+    -webkit-mask-repeat:no-repeat;
+    line-height:26px;
+    display: inline-block;
+    height: 25px;
+    width: 75px;
+    background-image: url('/assets/pointer-grad.png');
+
+  }
+  .previous
+  {
+    text-align:right;
+  }
+  .features
+  {
+    text-align:center;
+    div{margin-top:50px;}
+  }
 }
 
