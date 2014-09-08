@@ -51,9 +51,8 @@
         %h2 News
         .light
         .news-item
-          %a We have some new cabinets
-          %a Board Game Wednesdays
-          %a Twilight Zone Tournament
+          - @news.each do |post|
+            %a{href:post_path(post)}=post.title
       .col-md-4.col-sm-4
         %h2 Hours
         .light

@@ -1,0 +1,25 @@
+= form_for @post,:html => {:class => 'form-horizontal', :multipart => true } do |f| 
+
+  - if @post.errors.any?
+    #error_explanation
+      %h4= "#{pluralize(@post.errors.count, "error")} prohibited this event from being saved:"
+      - @post.errors.full_messages.each do |msg|
+        .alert.alert-danger= msg
+  .row
+    .field.form-group.col-xs-7
+      = f.text_field :title, class:"form-control", placeholder: "Title"
+  .row
+    .field.form-group.col-xs-12
+      = f.label :body
+      = f.cktext_area :body, :id=>"post_body", :ckeditor => {:toolbar => "Custom"}
+  .row
+    .field.form-group.col-xs-12
+      = f.submit class: "btn"
+
+:javascript
+  $(document).ready(function(){
+    $('.field_with_errors').each(function(){
+      $(this).addClass("error_text");
+    });
+  
+  });

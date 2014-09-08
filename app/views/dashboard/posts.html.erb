@@ -1,0 +1,48 @@
+<%- model_class = Post -%>
+
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.pluralize %></h1>
+</div>
+<div style="margin-bottom:10px;">
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_post_path,
+            :class => 'btn btn-primary' %>
+</div>
+<%- if flash[:notice] || flash[:error]-%>
+  <div class="span4">  
+    <% alert_class= (flash[:error].blank?)? "alert-success" : "alert-danger" %>
+    <% msg = (flash[:error].blank?)? flash[:notice] : flash[:error] %>
+    <div class="alert <%="#{alert_class}" %>">
+        <button type="button" class="close" data-dismiss="alert">×</button>
+        <%= msg %>
+    </div>
+  </div>
+<%- end -%>
+
+<table class="table table-bordered table-striped products-admin">
+  <thead>
+    <tr>
+      <th><%= model_class.human_attribute_name(:title) %></th>
+      <th style="min-width:475px"><%=t '.actions', :default => t("helpers.actions") %></th>
+    </tr>
+
+  </thead>
+  <tbody>
+    <% @posts.each do |post| %>
+      <tr>
+        <td class='product-title'><%= link_to post.title, edit_post_path(post) %></td>
+        <td>
+          <%= link_to t('.edit', :default => t("helpers.links.edit")),edit_post_path(post), :class => 'btn btn-mini btn-primary' %>
+          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                      post_path(post),
+                      :method => :delete,
+                      data: { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?'))},
+                      :class => 'btn btn-mini btn-danger' %>
+          <%= link_to("View", post_path(post), {:target=>"_new", :class=>"btn btn-info"})%>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+

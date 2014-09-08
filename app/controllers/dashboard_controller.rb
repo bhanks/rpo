@@ -10,6 +10,11 @@ class DashboardController < ApplicationController
 
   end
 
+
+  def posts
+    @posts = Post.all
+  end
+   
   def products
     @type = ACTION_TO_TYPE[params[:action]]
     @products = Product.where(type: @type)

@@ -2,6 +2,8 @@ Rails.application.routes.draw do
 
   devise_for :users
 
+  resources :posts
+
   resources :products do
     resources :prices
     member do
@@ -20,6 +22,7 @@ Rails.application.routes.draw do
       get 'games'
       get 'beers'
       get 'pizzas'
+      get 'posts'
     end
   end
   resources :games do
