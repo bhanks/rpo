@@ -221,29 +221,26 @@ body
     bottom: 7px;
   }
 
-  .previous a.prev-arrow
+  .previous a.prev-arrow, .next a.next-arrow
   {
-    -webkit-mask-image:url('/assets/prev-mask.png');
     -webkit-mask-repeat:no-repeat;
     line-height:26px;
     display: inline-block;
     height: 25px;
     width: 75px;
-    background-image: url('/assets/pointer-grad.png');
+    /*background-image: url('/assets/pointer-grad.png');*/
+    background-color:#428bca;
 
+  }
+  .previous a.prev-arrow
+  {
+    -webkit-mask-image:url('/assets/prev-mask.png');
   }
   
 
   .next a.next-arrow
   {
     -webkit-mask-image:url('/assets/next-neutral.png');
-    -webkit-mask-repeat:no-repeat;
-    line-height:26px;
-    display: inline-block;
-    height: 25px;
-    width: 75px;
-    background-image: url('/assets/pointer-grad.png');
-
   }
   .previous
   {
