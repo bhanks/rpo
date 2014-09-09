@@ -14,6 +14,7 @@
       = f.cktext_area :body, :id=>"post_body", :ckeditor => {:toolbar => "Custom"}
   .row
     .field.form-group.col-xs-12
+      = f.hidden_field :about,value: @about
       = f.submit class: "btn"
 
 :javascript

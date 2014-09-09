@@ -6,12 +6,12 @@
       =raw @post.body
     .col-md-6.col-sm-6.col-xs-6.previous
       - if @previous
-        %a{href:post_path(@previous),class:"prev-arrow"}
-        = link_to @previous.title, post_path(@previous),class:"prev-text"
+        %a{href:news_path(@previous),class:"prev-arrow"}
+        = link_to @previous.title, news_path(@previous),class:"prev-text"
     .col-md-6.col-sm-6.col-xs-6.next
       - if @next
-        = link_to @next.title, post_path(@next),class:"next-text"
-        %a{href:post_path(@next),class:"next-arrow"}
+        = link_to @next.title, news_path(@next),class:"next-text"
+        %a{href:news_path(@next),class:"next-arrow"}
   .col-md-4.col-sm-4.col-xs-12.features
     .col-md-12.col-sm-12.col-xs-6
       %a{href:"#"}

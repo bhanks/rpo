@@ -1,0 +1,54 @@
+.products
+{
+  margin-top:25px;
+  h4, h2
+  {
+    text-align:center;
+    margin-top:0px;
+  }
+  .item
+  {
+      border-radius:4px;
+  }
+  .category-one 
+  {
+    .item
+    {
+      margin-right:5px;
+      background-color:#ddd;
+    }
+    img{
+      float:left;
+    }
+  }
+  .category-two
+  {
+    .item{ 
+    margin-left:5px;
+      background-color:#ccc; }
+    img{
+      float:right;
+    }
+  }
+  .item
+  {
+    padding:15px;
+    margin-bottom:10px;
+    img
+    {
+      margin-right:6px;
+    }
+  }
+}
+.index-featured
+{
+  border-radius:5px;
+  background-color:#bbb;
+  margin-top:15px;
+  padding:10px;
+  h2
+  {
+    margin-top:0px;
+    font-size:20px;
+  }
+}

@@ -6,6 +6,7 @@ class ProductsController < ApplicationController
 
   def index
     @products = Product.all 
+    render layout:"application"
   end
 
   def new
@@ -153,6 +154,7 @@ class ProductsController < ApplicationController
 
   def set_type
     @type = Product::CONTROLLER_TO_TYPE[env["action_controller.instance"].class.to_s] 
+    instance_variable_set("@#{@type.downcase}", "active")
   end
 
 end

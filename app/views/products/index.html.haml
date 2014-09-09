@@ -1,0 +1,24 @@
+.container
+  .index-featured.row
+    .col-md-4.col-sm-4.col-xs-12
+      %img{src:"/assets/225.png"}
+    .col-md-8.col-sm-8.col-xs-12
+      %h2="Featured #{@type}"
+  .row.products
+    .col-md-6.col-sm-6.col-xs-12.category-one
+      %h2 Category One
+      -6.times do
+        .row.item
+          %h4 Title
+          .description
+            %p description
+    .col-md-6.col-sm-6.col-xs-12.category-two
+      %h2 Category Two
+      -6.times do
+        .row.item
+          %h4 Title
+          .description
+            %p description
+  -if @type.downcase == "pizza"
+    = render "slices"
+    = #render "salads"
