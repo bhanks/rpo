@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140909185940) do
+ActiveRecord::Schema.define(version: 20140910110555) do
 
   create_table "high_scores", force: true do |t|
     t.integer  "score"
@@ -27,7 +27,6 @@ ActiveRecord::Schema.define(version: 20140909185940) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "slug"
-    t.boolean  "about"
   end
 
   create_table "prices", force: true do |t|

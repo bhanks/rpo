@@ -4,7 +4,6 @@ Rails.application.routes.draw do
 
   resources :posts 
   resources :posts, path: "news", as:"news"
-  match "edit_about" => "posts#edit_about", via:["get"]
 
   #match "news" => "posts#index", via:["get"]
   #match "news/:id" => "posts#show", via:["get"]

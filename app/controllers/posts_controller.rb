@@ -35,25 +35,12 @@ class PostsController < ApplicationController
   end
 
   def edit
-    @about= false
     @post = Post.friendly.find(params[:id])
 
   end
 
-  def edit_about
-    @about = true
-    @post = Post.where(about:true).first
-    render action:"edit",layout:"dashboard"
-  end
-
   def update
-    unless params[:post][:about]
-      @post = Post.friendly.find(params[:id])
-      notice = "Post successfuly updated"
-    else
-      @post = Post.where(about:true).first
-      notice = "About page successfuly updated"
-    end
+    @post = Post.friendly.find(params[:id])
     @post.update_attributes(post_params)
     if @post.save
       flash[:notice] = notice

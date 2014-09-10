@@ -12,7 +12,7 @@ class DashboardController < ApplicationController
 
 
   def posts
-    @posts = Post.where(about:false).order("created_at ASC")
+    @posts = Post.order("created_at ASC")
   end
    
   def products
