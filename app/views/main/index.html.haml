@@ -2,8 +2,11 @@
   .content.features
     .image-drawer.row
       .col-sm-4.col-md-4.col-xs-12.featured.pizza{data:{arrow:"13.5%",content:"pizza",shift:"0px"}}
+        %img{src:"/assets/overlay-pizza.png",style:"background-image:url('/assets/game-test.png')"}
       .col-sm-4.col-md-4.col-xs-12.featured.beer{data:{arrow:"49%",content:"beer",shift:"245px"}}
+        %img{src:"/assets/overlay-beer.png"}
       .col-sm-4.col-md-4.col-xs-12.featured.game{data:{arrow:"84.5%",content:"game",shift:"490px"}}
+        %img{src:"/assets/overlay-game.png"}
 .split.hidden-xs
   .container
     .col-md-12
@@ -67,9 +70,11 @@
           %p 111 S Dubuque St
           %p Iowa City, IA 52240
           %a Map
-    .row
-      .col-md-8.col-xs8.hidden-xs
-        =render "carousel", handlers:[:erb]
+      .col-md-4.col-sm-4.col-md-offset-4.col-sm-offset-4
+        %h2 Contact
+        .light
+        .location
+          %p (555) 555-5555
 .container.mobile-features.hidden-sm.hidden-md.hidden-lg
   .row
     %h3 Featured Beer:
@@ -86,7 +91,29 @@
   .row
     %h2 Featured Pizza
 
+:javascript
+  $(document).ready(function(){
+    $('.featured').each(function(){
+      $(this).click(function(){
+        console.log('ready');
+        if($('.split').is(":visible") == false)
+          $(".split").slideDown();
+        var target = $(this).data("arrow");
+        var shift = $(this).data("shift");
+        $('.arrow').animate({
+            left: target
+          }
+          ,500
+          ,function(){});
+        $('.details').animate({bottom:shift},500);
+      });
+    });
+    
+    $('.close').click(function(){
+      $(".split").slideUp();
+    });
 
+  });
 
 
 

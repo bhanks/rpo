@@ -13,8 +13,10 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.friendly.find(params[:id])
-    @previous = Post.where("created_at < ?", @post.created_at).order("created_at DESC").limit(1).first
-    @next = Post.where("created_at > ?", @post.created_at).order("created_at ASC").limit(1).first
+    if @post
+      @previous = Post.where("created_at < ?", @post.created_at).order("created_at DESC").limit(1).first
+      @next = Post.where("created_at > ?", @post.created_at).order("created_at ASC").limit(1).first
+    end
   end
 
   def new

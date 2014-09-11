@@ -4,13 +4,24 @@ $magazine: #FFF8E9;
 body
 {
   font-family:Menlo;
-  background-color:$magazine;
   min-width:500px;
 }
 .logo-text
 {
   position:relative;
   right:40px;
+}
+.information p
+{
+  color:$red2;
+}
+.information a
+{
+  color:$blue;
+  &:hover
+  {
+    color:$blue1;
+  }
 }
 .banner
 {
@@ -76,7 +87,13 @@ body
   background-size:250px 200px;
   background-repeat:no-repeat;
   background-position:center;
-  background-image:url('/assets/featured-temp.png');
+  text-align:center;
+  /*background-image:url('/assets/featured-temp.png');*/
+  img
+  {
+    box-shadow: #6BA5B8 0px 1px 16px 6px;
+    border-radius: 16px;
+  }
   .title{
     background-color:rgba(0,0,0,.7);
     transform: rotate(-90deg);
@@ -103,15 +120,16 @@ body
 .headers h2
 {
   text-align:center;
+  color:$blue;
 }
 .light
 {
   display:block;
   height:1px;
-  background-color:blue;
+  background-color:$moreRed;
   width:60%;
   margin:0 auto;
-  box-shadow:0 0 6px blue;
+  box-shadow:$moreRed 0 0 8px 2px;
 }
 .horizontal-light
 {
@@ -165,7 +183,7 @@ body
 .split
 {
   width:100%;
-  background-color:$grey;
+  background-color:$blue1;
   overflow:hidden;
   height:250px;
   display:none;
@@ -178,7 +196,7 @@ body
   height: 0;
   border-style: solid;
   border-width: 10px 12.5px 0 12.5px;
-  border-color: $magazine transparent transparent transparent;
+  border-color: black transparent transparent transparent;
   position:relative;
   left:13.5%;
 }
