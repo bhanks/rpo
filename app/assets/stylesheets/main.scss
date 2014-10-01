@@ -229,11 +229,13 @@ body
   h1, h3
   {
     text-align:center;
+    color:$intenseGreen;
   }
 
   .post_body
   {
     margin:35px 0px;
+    p {color: $green}
   }
 
   .next a.next-text, a.prev-text

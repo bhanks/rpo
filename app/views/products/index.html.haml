@@ -1,4 +1,4 @@
-.container
+.container{class:"#{@type.downcase}-index"}
   .index-featured.row
     .col-md-4.col-sm-4.col-xs-12
       %img{src:"/assets/225.png"}
@@ -6,14 +6,14 @@
       %h2="Featured #{@type}"
   .row.products
     .col-md-6.col-sm-6.col-xs-12.category-one
-      %h2 Category One
+      %h3= @const::CATEGORIES[1]
       -6.times do
         .row.item
           %h4 Title
           .description
             %p description
     .col-md-6.col-sm-6.col-xs-12.category-two
-      %h2 Category Two
+      %h3= @const::CATEGORIES[2]
       -6.times do
         .row.item
           %h4 Title

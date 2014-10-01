@@ -5,7 +5,8 @@ class ProductsController < ApplicationController
   before_filter :set_type
 
   def index
-    @products = Product.all 
+    @products = Product.where(type:@type)
+    @const = @type.constantize
     render layout:"application"
   end
 

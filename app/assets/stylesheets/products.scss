@@ -1,3 +1,4 @@
+@import "colors";
 .products
 {
   margin-top:25px;
@@ -51,4 +52,38 @@
     margin-top:0px;
     font-size:20px;
   }
+}
+@mixin indices($feature,$h3_1,$h3_2,$item_1,$item_2)
+{
+  h3
+  {
+    text-align:center;
+  }
+  .index-featured
+  {
+    background-color:$feature;
+  }
+  .category-one
+  {
+    h3{ color:$h3_1; }
+    .item{ background-color:$item_1 }
+  }
+  .category-two 
+  {
+    h3{ color:$h3_2; }
+    .item{ background-color:$item_2 }
+  }
+
+}
+.pizza-index
+{
+  @include indices($yellow2,$red,$blue,$blue1,$red1)
+}
+.beer-index
+{
+  @include indices($blue1,$red,$green,$green,$red1)
+}
+.game-index
+{
+  @include indices($green,$yellow,$blue,$blue1,$yellow1)
 }
