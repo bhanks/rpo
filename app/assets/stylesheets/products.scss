@@ -81,9 +81,41 @@
 }
 .beer-index
 {
-  @include indices($blue1,$red,$green,$green,$red1)
+  @include indices($blue1,$green,$red,$red1,$green1)
 }
 .game-index
 {
-  @include indices($green,$yellow,$blue,$blue1,$yellow1)
+  @include indices($green,$blue,$yellow,$yellow2,$blue1)
+}
+.other
+{
+  text-align:center;
+}
+.other ul
+{
+  list-style-type:none;
+  li
+  {
+    display:inline-block;
+  }
+  li:before
+  {
+    content:"|";
+  }
+  li:first-child:before
+  {
+    content:"";
+  }
+
+}
+.image-container
+{
+  text-align:center;
+}
+@media(max-width:770px){
+  .products .item, .index-featured
+  {
+    margin-left:0px;
+    margin-right:0px;
+  }
 }

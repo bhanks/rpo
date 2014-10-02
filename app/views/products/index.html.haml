@@ -1,6 +1,6 @@
 .container{class:"#{@type.downcase}-index"}
   .index-featured.row
-    .col-md-4.col-sm-4.col-xs-12
+    .col-md-4.col-sm-4.col-xs-12.image-container
       %img{src:"/assets/225.png"}
     .col-md-8.col-sm-8.col-xs-12
       %h2="Featured #{@type}"
@@ -12,6 +12,13 @@
           %h4 Title
           .description
             %p description
+          .other
+            %ul
+              %li
+                %a image
+              %li
+                %a high scores 
+
     .col-md-6.col-sm-6.col-xs-12.category-two
       %h3= @const::CATEGORIES[2]
       -6.times do
