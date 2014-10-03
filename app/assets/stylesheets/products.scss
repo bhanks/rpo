@@ -46,11 +46,16 @@
   border-radius:5px;
   background-color:#bbb;
   margin-top:15px;
-  padding:10px;
+  padding:20px 10px;
   h2
   {
     margin-top:0px;
     font-size:20px;
+    text-align:center;
+  }
+  h2.title
+  {
+    font-weight:bold;
   }
 }
 @mixin indices($feature,$h3_1,$h3_2,$item_1,$item_2)
@@ -111,6 +116,11 @@
 .image-container
 {
   text-align:center;
+  img
+  {
+    box-shadow: white 0px 1px 16px 6px;
+    border-radius: 16px;
+  }
 }
 @media(max-width:770px){
   .products .item, .index-featured

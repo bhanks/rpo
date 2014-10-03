@@ -1,9 +1,11 @@
 .container{class:"#{@type.downcase}-index"}
   .index-featured.row
     .col-md-4.col-sm-4.col-xs-12.image-container
-      %img{src:"/assets/225.png"}
+      %img{src:"/assets/overlay-#{@type.downcase}-sq.png",style:"background-image:url(#{@featured.image.feature})"}
     .col-md-8.col-sm-8.col-xs-12
-      %h2="Featured #{@type}"
+      %h2="Featured #{@type}:"
+      %h2.title=@featured.title
+      =raw @featured.description
   .row.products
     .col-md-6.col-sm-6.col-xs-12.category-one
       %h3= @const::CATEGORIES[1]

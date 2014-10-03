@@ -7,6 +7,7 @@ class ProductsController < ApplicationController
   def index
     @products = Product.where(type:@type)
     @const = @type.constantize
+    @featured = Product.where(type:@type, featured:true).first
     render layout:"application"
   end
 
@@ -24,15 +25,16 @@ class ProductsController < ApplicationController
         img = ::Magick::Image::read(@product.image.path).first
         width = img.columns
         height = img.rows
-        unless(height <= 400 || width <= 400)
-          redirect_to @url_helper.send("crop_#{@type.downcase}_path",id:@product.id)
-        else
+        if(height < 250 || width < 250)
           @product.remove_image!
           @product.save!
-          @product.errors.add :image, "must be at least 400 x 400"
+          @product.errors.add :image, "must be at least 250 x 250"
           render action: "new", :layout => "dashboard"
+        else
+          redirect_to @url_helper.send("#{@type.downcase.pluralize.to_sym}_dashboard_index_path") 
         end
-      #redirect_to @url_helper.send("#{@type.downcase.pluralize.to_sym}_dashboard_index_path") 
+      else
+        redirect_to @url_helper.send("#{@type.downcase.pluralize.to_sym}_dashboard_index_path") 
       end
     else
       render action: "edit", layout: "dashboard"
@@ -54,12 +56,15 @@ class ProductsController < ApplicationController
         img = ::Magick::Image::read(@product.image.path).first
         width = img.columns
         height = img.rows
-        unless(height <= 400 || width <= 400)
-          redirect_to @url_helper.send("crop_#{@type.downcase}_path",id:@product.id)
-        else
-          @product.errors.add :image, "must be at least 400 x 400"
+        if(height < 250 || width < 250)
+          @product.errors.add :image, "must be at least 250 x 250"
           render action: "edit", :layout => "dashboard"
+        else
+          @product.image.recreate_versions!
+          redirect_to @url_helper.send("#{@type.downcase.pluralize.to_sym}_dashboard_index_path") 
         end
+      else
+        redirect_to @url_helper.send("#{@type.downcase.pluralize.to_sym}_dashboard_index_path") 
       end
     else
       render action: "edit", layout: "dashboard"

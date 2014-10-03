@@ -2,67 +2,41 @@
   .content.features
     .image-drawer.row.hidden-sm
       .col-sm-4.col-md-4.col-xs-12.featured.pizza{data:{arrow:"13.5%",content:"pizza",shift:"0px"}}
-        %img{src:"/assets/overlay-pizza.png",style:"background-image:url('/assets/game-test.png')"}
+        %img{src:"/assets/overlay-pizza.png",style:"background-image:url(#{@featured_pizza.image})"}
       .col-sm-4.col-md-4.col-xs-12.featured.beer{data:{arrow:"49%",content:"beer",shift:"245px"}}
-        %img{src:"/assets/overlay-beer.png"}
+        %img{src:"/assets/overlay-beer.png",style:"background-image:url(#{@featured_beer.image})"}
       .col-sm-4.col-md-4.col-xs-12.featured.game{data:{arrow:"84.5%",content:"game",shift:"490px"}}
-        %img{src:"/assets/overlay-game.png"}
+        %img{src:"/assets/overlay-game.png",style:"background-image:url('#{@featured_game.image}')"}
     .image-drawer.row.hidden-md.hidden-lg
       .col-sm-4.col-md-4.col-xs-12.featured.pizza{data:{arrow:"13.5%",content:"pizza",shift:"0px"}}
-        %img{src:"/assets/overlay-pizza-sq.png",style:"background-image:url('/assets/game-test.png')"}
+        %img{src:"/assets/overlay-pizza-sq.png",style:"background-image:url(#{@featured_pizza.image})"}
       .col-sm-4.col-md-4.col-xs-12.featured.beer{data:{arrow:"49%",content:"beer",shift:"245px"}}
-        %img{src:"/assets/overlay-beer-sq.png"}
+        %img{src:"/assets/overlay-beer-sq.png",style:"background-image:url(#{@featured_beer.image})"}
       .col-sm-4.col-md-4.col-xs-12.featured.game{data:{arrow:"84.5%",content:"game",shift:"490px"}}
-        %img{src:"/assets/overlay-game-sq.png"}
+        %img{src:"/assets/overlay-game-sq.png",style:"background-image:url(#{@featured_game.image.feature})"}
 .split.hidden-xs
   .container
     .col-md-12
       .arrow
     .content.details
-      .row.pizza
-        .close
-          &times;
-        .col-md-4.col-sm-4.col-xs-12
-          %img{src:"http://placekitten.com/g/200/200"}
-        .col-md-8.col-sm-8.col-xs-12
-          .row.name Pizza Pizza Pizza
-          .row
-            .col-md-3.col-sm-3.separator
-          .row.description
-            %p Some Text will go here
-      .row.beer
-        .col-md-12.sol-sm-12{style:"display:block;height:10px;"}
-        .close
-          &times;
-        .col-md-4.col-sm-4
-          %img{src:"http://placekitten.com/g/200/200"}
-        .col-md-8.col-sm-8
-          .row.name Beer Beer Beer
-          .row
-            .col-md-3.col-sm-3.separator
-          .row.description
-            %p Some Text will go here
-      .row.game
-        .col-md-12.col-sm-12{style:"display:block;height:10px;"}
-        .close
-          &times;
-        .col-md-4.col-sm-4
-          %img{src:"http://placekitten.com/g/200/200"}
-        .col-md-8.col-sm-8
-          .row.name Games Games Games
-          .row
-            .col-md-3.col-sm-3.separator
-          .row.description
-            %p Some Text will go here
+      - {"pizza"=>@featured_pizza,"beer"=>@featured_beer,"game"=>@featured_game}.each_pair do |key,item|
+        .row{class:key}
+          .col-md-12.col-sm-12{style:"display:block;height:10px;"}
+          .close
+            &times;
+          .col-md-4.hidden-sm
+            %img{src:"#{item.image.feature}"}
+          .col-sm-4.hidden-md.hidden-lg{style:"height:200px;width:200px"}
+            %img{src:"#{item.image.small}"}
+          .col-md-7.col-sm-7
+            .row.name=item.title
+            .row
+              .col-md-3.col-sm-3.separator
+            .row.description
+              =raw item.description
 .container.information
   .content
     .row.headers
-      .col-md-4.col-sm-4
-        %h2 News
-        .light
-        .news-item
-          - @news.each do |post|
-            %a{href:post_path(post)}=post.title
       .col-md-4.col-sm-4
         %h2 Hours
         .light
@@ -77,19 +51,25 @@
           %p 111 S Dubuque St
           %p Iowa City, IA 52240
           %a Map
-      .col-md-4.col-sm-4.col-md-offset-4.col-sm-offset-4
+      .col-md-4.col-sm-4
         %h2 Contact
         .light
         .location
           %p (555) 555-5555
+      .col-md-4.col-sm-4.col-md-offset-4.col-sm-offset-4
+        %h2 News
+        .light
+        .news-item
+          - @news.each do |post|
+            %a{href:post_path(post)}=post.title
 .container.mobile-features.hidden-sm.hidden-md.hidden-lg
   .image-drawer.row.hidden-md.hidden-lg
     .col-sm-4.col-md-4.col-xs-12.featured.pizza{data:{arrow:"13.5%",content:"pizza",shift:"0px"}}
-      %img{src:"/assets/overlay-pizza-sq.png",style:"background-image:url('/assets/game-test.png')"}
+      %img{src:"/assets/overlay-pizza-sq.png",style:"background-image:url(#{@featured_pizza.image})"}
     .col-sm-4.col-md-4.col-xs-12.featured.beer{data:{arrow:"49%",content:"beer",shift:"245px"}}
-      %img{src:"/assets/overlay-beer-sq.png"}
+      %img{src:"/assets/overlay-beer-sq.png",style:"background-image:url(#{@featured_beer.image})"}
     .col-sm-4.col-md-4.col-xs-12.featured.game{data:{arrow:"84.5%",content:"game",shift:"490px"}}
-      %img{src:"/assets/overlay-game-sq.png"}
+      %img{src:"/assets/overlay-game-sq.png",style:"background-image:url(#{@featured_game.image.feature})"}
 
 :javascript
   $(document).ready(function(){

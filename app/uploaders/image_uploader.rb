@@ -43,14 +43,14 @@ class ImageUploader < CarrierWave::Uploader::Base
   #   process :resize_to_fit => [50, 50]
   # end
 
+  process resize_to_fill: [250,250]
+
   version :small do
-    process :crop
-    process resize_to_fit:  [200,200]
+    process resize_to_fit:  [125,125]
   end 
 
-  version :normal do
-    process :crop
-    process resize_to_fit: [400,400]
+  version :feature do
+    process resize_to_fit: [200,200]
   end
   
 
@@ -60,18 +60,18 @@ class ImageUploader < CarrierWave::Uploader::Base
     #%w(jpg jpeg png)
   #end
 
-  def crop
-    if model.crop_x.present?
-      manipulate! do |img|
-        x = model.crop_x.to_i
-        y = model.crop_y.to_i
-        w = model.crop_w.to_i
-        h = model.crop_h.to_i
-        img.crop!(x,y,w,h)
-        #img.resize_to_fit!(400,400)
-      end
-    end 
-  end
+  #def crop
+    #if model.crop_x.present?
+      #manipulate! do |img|
+        #x = model.crop_x.to_i
+        #y = model.crop_y.to_i
+        #w = model.crop_w.to_i
+        #h = model.crop_h.to_i
+        #img.crop!(x,y,w,h)
+        ##img.resize_to_fit!(400,400)
+      #end
+    #end 
+  #end
   # Override the filename of the uploaded files:
   # Avoid using model.id or version_name here, see uploader/store.rb for details.
   # def filename
