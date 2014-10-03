@@ -4,6 +4,9 @@ class PostsController < ApplicationController
 
   def index
     #redirect_to news_path(Post.order("created_at DESC").limit(1).first.slug)
+    @featured_game = Game.where(featured:true).first
+    @featured_pizza = Pizza.where(featured:true).first
+    @featured_beer = Beer.where(featured:true).first
     @post = Post.order("created_at DESC").limit(1).first
     @previous = Post.where("created_at < ?", @post.created_at).order("created_at DESC").limit(1).first
     @next = Post.where("created_at > ?", @post.created_at).order("created_at ASC").limit(1).first
@@ -12,6 +15,9 @@ class PostsController < ApplicationController
   end
 
   def show
+    @featured_game = Game.where(featured:true).first
+    @featured_pizza = Pizza.where(featured:true).first
+    @featured_beer = Beer.where(featured:true).first
     @post = Post.friendly.find(params[:id])
     if @post
       @previous = Post.where("created_at < ?", @post.created_at).order("created_at DESC").limit(1).first

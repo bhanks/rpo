@@ -2,6 +2,7 @@
   .col-md-8.col-sm-8.col-xs-12
     %h1=@post.title
     %h3=@post.created_at.strftime("%b %m.%d.%Y")
+  .col-md-8.col-sm-8.col-xs-12
     .post_body
       =raw @post.body
     .col-md-6.col-sm-6.col-xs-6.previous
@@ -12,19 +13,19 @@
       - if @next
         = link_to @next.title, news_path(@next),class:"next-text"
         %a{href:news_path(@next),class:"next-arrow"}
-  .col-md-4.col-sm-4.col-xs-12.features
+  .col-md-4.col-sm-4.col-xs-12.news-features
     .image-drawer.row.hidden-sm.hidden-xs
-      .col-sm-12.col-md-12.col-xs-12.featured.pizza{data:{arrow:"13.5%",content:"pizza",shift:"0px"}}
-        %img{src:"/assets/overlay-pizza.png",style:"background-image:url('/assets/game-test.png')"}
-      .col-sm-12.col-md-12.col-xs-12.featured.beer{data:{arrow:"49%",content:"beer",shift:"245px"}}
-        %img{src:"/assets/overlay-beer.png"}
-      .col-sm-12.col-md-12.col-xs-12.featured.game{data:{arrow:"84.5%",content:"game",shift:"490px"}}
-        %img{src:"/assets/overlay-game.png"}
+      .col-sm-12.col-md-12.col-xs-12.featured.pizza
+        %img{src:"/assets/overlay-pizza.png",style:"background-image:url(#{@featured_pizza.image})"}
+      .col-sm-12.col-md-12.col-xs-12.featured.beer
+        %img{src:"/assets/overlay-beer.png",style:"background-image:url(#{@featured_beer.image})"}
+      .col-sm-12.col-md-12.col-xs-12.featured.game
+        %img{src:"/assets/overlay-game.png",style:"background-image:url(#{@featured_game.image})"}
     .image-drawer.row.hidden-md.hidden-lg
-      .col-sm-12.col-md-12.col-xs-6.featured.pizza{data:{arrow:"13.5%",content:"pizza",shift:"0px"}}
-        %img{src:"/assets/overlay-pizza-sq.png",style:"background-image:url('/assets/game-test.png')"}
-      .col-sm-12.col-md-12.col-xs-6.featured.beer{data:{arrow:"49%",content:"beer",shift:"245px"}}
-        %img{src:"/assets/overlay-beer-sq.png"}
-      .col-sm-12.col-md-12.col-xs-12.featured.game{data:{arrow:"84.5%",content:"game",shift:"490px"}}
-        %img{src:"/assets/overlay-game-sq.png"}
+      .col-sm-12.col-md-12.col-xs-6.featured.pizza
+        %img{src:"/assets/overlay-pizza-sq.png",style:"background-image:url(#{@featured_pizza.image})"}
+      .col-sm-12.col-md-12.col-xs-6.featured.beer
+        %img{src:"/assets/overlay-beer-sq.png",style:"background-image:url(#{@featured_beer.image})"}
+      .col-sm-12.col-md-12.col-xs-12.featured.game
+        %img{src:"/assets/overlay-game-sq.png",style:"background-image:url(#{@featured_game.image})"}
 
