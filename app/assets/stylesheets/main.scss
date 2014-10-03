@@ -162,15 +162,17 @@ body
 .mobile-features
 {
   text-align:center;
+  .featured
+  {
+    margin-bottom:25px;
+  }
 }
 @media (max-width: 992px) {
   .featured
   {
-    height:300px;
     background-size:200px 300px;
     background-repeat:no-repeat;
     background-position:center;
-    background-image:url('http://placekitten.com/g/200/300');
     .title
     {
       height:200px;
@@ -273,7 +275,7 @@ body
   .features
   {
     text-align:center;
-    div{margin-top:50px;}
+    div{margin-bottom:50px;}
   }
 }
 
