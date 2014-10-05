@@ -9,25 +9,19 @@
   .row.products
     .col-md-6.col-sm-6.col-xs-12.category-one
       %h3= @const::CATEGORIES[1]
-      -6.times do
+      - @c1.each do |item|
         .row.item
-          %h4 Title
+          %h4= item.title
           .description
-            %p description
-          .other
-            %ul
-              %li
-                %a image
-              %li
-                %a high scores 
+            = raw item.description
 
     .col-md-6.col-sm-6.col-xs-12.category-two
       %h3= @const::CATEGORIES[2]
-      -6.times do
+      - @c2.each do |item|
         .row.item
-          %h4 Title
+          %h4= item.title
           .description
-            %p description
+            = raw item.description
   -if @type.downcase == "pizza"
     = render "slices"
     = #render "salads"

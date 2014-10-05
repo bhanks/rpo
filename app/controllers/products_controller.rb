@@ -5,7 +5,9 @@ class ProductsController < ApplicationController
   before_filter :set_type
 
   def index
-    @products = Product.where(type:@type)
+    #@products = Product.where(type:@type)
+    @c1 = Product.where(type:@type, category:1)
+    @c2 = Product.where(type:@type, category:2)
     @const = @type.constantize
     @featured = Product.where(type:@type, featured:true).first
     render layout:"application"

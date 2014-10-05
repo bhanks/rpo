@@ -82,15 +82,15 @@
 }
 .pizza-index
 {
-  @include indices($yellow2,$red,$blue,$blue1,$red1)
+  @include indices($yellow2,$red,$blue,$red1,$blue1)
 }
 .beer-index
 {
-  @include indices($blue1,$green,$red,$red1,$green1)
+  @include indices($blue1,$moreGreen,$red,$green1,$red1)
 }
 .game-index
 {
-  @include indices($green,$blue,$yellow,$yellow2,$blue1)
+  @include indices($green,$blue,$yellow,$blue1,$yellow2)
 }
 .other
 {
