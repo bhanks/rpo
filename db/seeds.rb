@@ -49,9 +49,9 @@ description=[
   "<p>Pellentesque congue lectus nisl, eu fermentum velit volutpat ut. Sed lacinia auctor vestibulum. Aliquam tempor ligula in justo pellentesque, vel varius eros bibendum. In ut sapien vel turpis gravida auctor non ac mi. Donec feugiat, neque et vestibulum interdum, tortor.</p>",
   "<p>Mauris ac accumsan orci. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam finibus bibendum turpis, sit amet varius urna varius et. Etiam faucibus pellentesque aliquam. Etiam a tincidunt odio. Aliquam pellentesque eros lorem, vehicula sodales mi vehicula quis. Aenean.</p>"
 ]
-game_images = Dir::entries("db/images/game").reject{|i| i == "." || i == ".."}
-beer_images = Dir::entries("db/images/beer").reject{|i| i == "." || i == ".."}
-pizza_images = Dir::entries("db/images/pizza").reject{|i| i == "." || i == ".."}
+game_images = Dir::entries("#{Rails.root}/db/images/game").reject{|i| i == "." || i == ".."}
+beer_images = Dir::entries("#{Rails.root}/db/images/beer").reject{|i| i == "." || i == ".."}
+pizza_images = Dir::entries("#{Rails.root}/db/images/pizza").reject{|i| i == "." || i == ".."}
 data = {
   pizza:{names:pizza_names,images:pizza_images},
   beer:{names:beer_names,images:beer_images},
@@ -62,7 +62,7 @@ data.each_pair do |type, hash|
   names = hash[:names].dup
   images = hash[:images].dup
   12.times do |i|
-    category = (i > 6)? 1:2
+    category = (i > 7)? 1:2
     r = Random.new
     names = hash[:names].dup if names.empty?
     images = hash[:images].dup if images.empty?
@@ -80,7 +80,7 @@ data.each_pair do |type, hash|
       description:desc,
       visible:true,
       type:type.capitalize.to_s,
-      image:File.open("db/images/#{type.to_s}/#{img}"),
+      image:File.open("#{Rails.root}/db/images/#{type.to_s}/#{img}"),
       category:category
     )
     puts p
