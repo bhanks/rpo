@@ -19,6 +19,7 @@ gem 'nested_form'
 gem 'rmagick', :require => 'RMagick'
 #gem 'mini_magick'
 gem 'carrierwave'
+gem 'fog'
 gem 'font-awesome-rails'
 gem 'jcrop-rails-v2'
 # Use Uglifier as compressor for JavaScript assets

@@ -24,7 +24,7 @@ class ProductsController < ApplicationController
     @product = @type.constantize.new(product_params)
     if @product.save
       if params[@type.downcase.to_sym][:image]
-        img = ::Magick::Image::read(@product.image.path).first
+        img = ::Magick::Image::read(@product.image).first
         width = img.columns
         height = img.rows
         if(height < 250 || width < 250)

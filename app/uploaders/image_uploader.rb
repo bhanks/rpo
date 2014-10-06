@@ -7,18 +7,18 @@ class ImageUploader < CarrierWave::Uploader::Base
   #include CarrierWave::MiniMagick
 
   # Choose what kind of storage to use for this uploader:
-  storage :file
-  # storage :fog
+  #storage :file
+   storage :fog
 
   # Override the directory where uploaded files will be stored.
   # This is a sensible default for uploaders that are meant to be mounted:
   def store_dir
-    "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
+    "#{ENV["FP_LOCATION"]}/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
   end
-  def file_name
-    if original_filename       
-      ext = original_filename.match(/\.(jpg|jpeg|png)/)[1]
-      model.name.gsub(/\s/,"_")+".#{ext}"
+  def filename
+    if original_filename
+      ext = original_filename.match(/\.(jpg|jpeg|png|gif)/)[1]
+      model.title.downcase.gsub(/\s/,"_")+".#{ext}"
     end
   end
 
@@ -56,9 +56,9 @@ class ImageUploader < CarrierWave::Uploader::Base
 
   # Add a white list of extensions which are allowed to be uploaded.
   # For images you might use something like this:
-  #def extension_white_list
-    #%w(jpg jpeg png)
-  #end
+  def extension_white_list
+    %w(jpg jpeg png)
+  end
 
   #def crop
     #if model.crop_x.present?
