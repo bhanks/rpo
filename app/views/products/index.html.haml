@@ -12,6 +12,7 @@
       - @c1.each do |item|
         .row.item
           %h4= item.title
+          %img{src:item.image.small}
           .description
             = raw item.description
 
@@ -20,6 +21,7 @@
       - @c2.each do |item|
         .row.item
           %h4= item.title
+          %img{src:item.image.small}
           .description
             = raw item.description
   -if @type.downcase == "pizza"

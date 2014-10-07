@@ -34,6 +34,8 @@
               .col-md-3.col-sm-3.separator
             .row.description
               %p=item.subtitle
+              - link = @url_helper.send("#{key.pluralize}_path")
+              %a{href:link} Read More
 .container.information
   .content
     .row.headers

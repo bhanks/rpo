@@ -20,6 +20,13 @@
     }
     img{
       float:left;
+      border-radius:6px;
+      box-shadow: black 0px 1px 14px 2px;
+    }
+    .description
+    {
+      position:relative;
+      left:5px;
     }
   }
   .category-two
@@ -29,6 +36,13 @@
       background-color:#ccc; }
     img{
       float:right;
+      border-radius:6px;
+      box-shadow: black 0px 1px 14px 2px;
+    }
+    .description
+    {
+      position:relative;
+      right:5px;
     }
   }
   .item
@@ -118,7 +132,7 @@
   text-align:center;
   img
   {
-    box-shadow: white 0px 1px 16px 6px;
+    box-shadow: black 0px 1px 16px 6px;
     border-radius: 16px;
   }
 }

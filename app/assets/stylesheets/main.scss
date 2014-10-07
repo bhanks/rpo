@@ -206,6 +206,13 @@ body
   display:none;
   box-shadow: inset 0 10px 10px -10px black,
               inset 0 -10px 10px -10px black;
+  a
+  {
+    color:$moreRed;
+    &:hover{
+      color:$intenseRed;
+    }
+  }
 }
 .arrow
 {
@@ -292,6 +299,17 @@ body
   {
     text-align:center;
     div{margin-bottom:50px;}
+  }
+}
+.sm-icons
+{
+  text-align:left;
+}
+@media(max-width: 772px)
+{
+  .sm-icons
+  {
+    text-align:center;
   }
 }
 

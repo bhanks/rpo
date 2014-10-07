@@ -10,19 +10,24 @@
 </head>
 <body>
   <div class="banner">
-    <div class="logo">
+    <div class="logo hidden-sm hidden-md hidden-lg">
       <a href="<%=root_path%>">
         <img class="logo" src="/assets/fplogo.png"/>
       </a>
     </div>
+    <div class="logo hidden-xs">
+      <a href="<%=root_path%>">
+        <img class="logo" src="/assets/fp_logo_wide.png"/>
+      </a>
+    </div>
     <div class="container">
       <div class="row info">
-        <div class='col-sm-2 col-md-1 col-md-offset-2 item'><span class="chev <%=@pizza%>">&rsaquo;</span><a href="<%=pizzas_path%>">Pizza</a></div>
-        <div class='col-sm-2 col-md-1 item'><span class="chev <%=@beer%>">&rsaquo;</span><a href="<%=beers_path%>">Beer</a></div>
-        <div class='col-sm-2 col-md-1 item'><span class="chev <%=@game%>">&rsaquo;</span><a href="<%=games_path%>">Games</a></div>
-        <div class='col-sm-2 col-md-1 item'><span class="chev <%=@news%>">&rsaquo;</span><a href="<%=news_index_path%>">News</a></div>
-        <div class='col-sm-2 col-md-1 item'><span class="chev <%=@about%>">&rsaquo;</span><a>About</a></div>
-        <div class='col-sm-2 col-md-2'>
+        <div class='col-sm-2 col-md-2 item'><span class="chev <%=@pizza%>">&rsaquo;</span><a href="<%=pizzas_path%>">Pizza</a></div>
+        <div class='col-sm-2 col-md-2 item'><span class="chev <%=@beer%>">&rsaquo;</span><a href="<%=beers_path%>">Beer</a></div>
+        <div class='col-sm-2 col-md-2 item'><span class="chev <%=@game%>">&rsaquo;</span><a href="<%=games_path%>">Games</a></div>
+        <div class='col-sm-2 col-md-2 item'><span class="chev <%=@news%>">&rsaquo;</span><a href="<%=news_index_path%>">News</a></div>
+        <div class='col-sm-2 col-md-2 item'><span class="chev <%=@about%>">&rsaquo;</span><a>About</a></div>
+        <div class='col-sm-2 col-md-2 sm-icons'>
           <a><i class="fa fa-facebook"></i></a>
           <a><i class="fa fa-twitter"></i></a>
           <a><i class="fa fa-instagram"></i></a>

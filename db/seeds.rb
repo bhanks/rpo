@@ -62,7 +62,7 @@ data.each_pair do |type, hash|
   names = hash[:names].dup
   images = hash[:images].dup
   12.times do |i|
-    category = (i > 7)? 1:2
+    category = (i < 6)? 1:2
     r = Random.new
     names = hash[:names].dup if names.empty?
     images = hash[:images].dup if images.empty?
