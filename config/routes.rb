@@ -27,6 +27,7 @@ Rails.application.routes.draw do
       get 'beers'
       get 'pizzas'
       get 'posts'
+      get 'foods'
     end
   end
   resources :games do
@@ -59,6 +60,18 @@ Rails.application.routes.draw do
   end
 
   resources :pizzas do
+    member do
+      get 'toggle_visible'
+      get 'make_featured'
+      get 'crop'
+      patch 'make_crop'
+    end
+    collection do
+      get 'display_order'
+      post 'update_display_order'
+    end
+  end
+  resources :foods do
     member do
       get 'toggle_visible'
       get 'make_featured'

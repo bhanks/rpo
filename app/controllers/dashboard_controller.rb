@@ -1,5 +1,6 @@
 class DashboardController < ApplicationController
   ACTION_TO_TYPE = {
+    "foods" => "Food",
     "games" => "Game",
     "beers" => "Beer",
     "pizzas" => "Pizza"
@@ -30,6 +31,9 @@ class DashboardController < ApplicationController
   end
 
   def pizzas
+    products
+  end
+  def foods
     products
   end
 

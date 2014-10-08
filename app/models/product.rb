@@ -10,6 +10,7 @@ class Product < ActiveRecord::Base
   attr_accessor :crop_x, :crop_y, :crop_h, :crop_w
 
   CONTROLLER_TO_TYPE = {
+    "FoodsController" => "Food",
     "GamesController"=> "Game",
     "BeersController"=> "Beer",
     "PizzasController"=> "Pizza",

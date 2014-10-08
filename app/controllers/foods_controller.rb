@@ -1,0 +1,2 @@
+class FoodsController < ProductsController
+end
