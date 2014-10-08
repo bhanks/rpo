@@ -3,6 +3,7 @@ class ProductsController < ApplicationController
   # http://stackoverflow.com/questions/3025784/rails-layouts-per-action
 
   before_filter :set_type
+  before_filter :authenticate_user!, :except => [:index, :show]
 
   def index
     #@products = Product.where(type:@type)
@@ -148,7 +149,7 @@ class ProductsController < ApplicationController
   protected
 
   def product_params
-    params[@type.downcase.to_sym].permit(:title, :subtitle, :description, :display_order, :image, :featured, :visible, prices_attributes: [:amount, :description, :id, :_destroy])
+    params[@type.downcase.to_sym].permit(:title, :subtitle, :description,:category, :display_order, :image, :featured, :visible, prices_attributes: [:amount, :description, :id, :_destroy])
   end
 
   private

@@ -1,10 +1,15 @@
+puts "test #{ENV['FP_LOCATION']}"
+key = ENV["S3_KEY"]
+key ||= Rails.application.secrets.S3_KEY
+secret = ENV["S3_SECRET"]
+secret ||= Rails.application.secrets.S3_SECRET
 CarrierWave.configure do |config|
   config.enable_processing = true
   config.directory_permissions = 0777
   config.fog_credentials = {
     :provider               => 'AWS',                        # required
-    :aws_access_key_id      => ENV['S3_KEY'],
-    :aws_secret_access_key  => ENV['S3_SECRET'],                        # required
+    :aws_access_key_id      => key,
+    :aws_secret_access_key  => secret
   }
    
   config.fog_directory  = 'forbiddenplanet-assets'                          # required

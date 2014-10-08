@@ -12,6 +12,10 @@
     .field.form-group.col-xs-7
       = f.text_field :subtitle, class:"form-control", placeholder: "Subtitle (POST COLONIC SURGE)"
   .row
+    .field.form-group.col-xs-7
+      = f.label :category
+      = f.select :category, options_for_select(@type.constantize::CATEGORIES.invert.to_a)
+  .row
     .field.form-group.col-xs-12
       = f.label :description
       = f.cktext_area :description, :id=>"product_description", :ckeditor => {:toolbar => "Custom"}

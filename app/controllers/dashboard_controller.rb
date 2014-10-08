@@ -4,7 +4,7 @@ class DashboardController < ApplicationController
     "beers" => "Beer",
     "pizzas" => "Pizza"
   }
-
+  before_filter :authenticate_user!
 
   def index
 
