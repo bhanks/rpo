@@ -1,4 +1,3 @@
-puts "test #{ENV['FP_LOCATION']}"
 key = ENV["S3_KEY"]
 key ||= Rails.application.secrets.S3_KEY
 secret = ENV["S3_SECRET"]
