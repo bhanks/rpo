@@ -7,23 +7,30 @@
       %h2.title=@featured.title
       =raw @featured.description
   .row.products
-    .col-md-6.col-sm-6.col-xs-12.category-one
-      %h3= @const::CATEGORIES[1]
-      - @c1.each do |item|
-        .row.item
-          %h4= item.title
-          %img{src:item.image.small}
-          .description
-            = raw item.description
+    - @products.each_pair do |key, items|
+      - category = cycle("category-one","category-two")
+      .col-md-6.col-sm-6.col-xs-12{class:category}
+        %h3= @const::CATEGORIES[key]
+        - items.each do |item|
+          .row.item
+            %h4= item.title
+            %img{src:item.image.small}
+            .description
+              = raw item.description
 
-    .col-md-6.col-sm-6.col-xs-12.category-two
-      %h3= @const::CATEGORIES[2]
-      - @c2.each do |item|
-        .row.item
-          %h4= item.title
-          %img{src:item.image.small}
-          .description
-            = raw item.description
   -if @type.downcase == "pizza"
-    = render "slices"
+    = #render "slices"
     = #render "salads"
+
+    .row.products
+      - @food.keys.sort.each do |key|
+        - items = @food[key]
+        - category = cycle("appetizers","salads","col-md-offset-3 col-sm-offset-3 desserts")
+        .col-md-6.col-sm-6.col-xs-12{class:category}
+          %h3= Food::CATEGORIES[key].pluralize
+          - items.each do |item|
+            .row.item
+              %h4= item.title
+              %img{src:item.image.small}
+              .description
+                = raw item.description

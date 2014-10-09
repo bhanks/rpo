@@ -7,8 +7,8 @@ class ProductsController < ApplicationController
 
   def index
     #@products = Product.where(type:@type)
-    @c1 = Product.where(type:@type, category:1)
-    @c2 = Product.where(type:@type, category:2)
+    @products = Product.where(type:@type).order(:display_order).group_by(&:category)
+    @food = Product.where(type:"Food").order(:display_order).group_by(&:category) if @type == "Pizza"
     @const = @type.constantize
     @featured = Product.where(type:@type, featured:true).first
     render layout:"application"
