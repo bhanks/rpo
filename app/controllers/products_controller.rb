@@ -112,7 +112,7 @@ class ProductsController < ApplicationController
   end
 
   def display_order
-    @products = Product.where(type:@type).order(:display_order).to_a
+    @products = Product.where(type:@type).order(:display_order).group_by(&:category)
   end
 
   def update_display_order

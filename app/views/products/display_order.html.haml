@@ -1,9 +1,32 @@
 %h1="#{@type.pluralize} Display Order"
 
 =form_tag(controller:params[:controller], action:"update_display_order") do |f|
-  .display-order.col-xs-6
-    -@products.each do |product|
-      .well.well-sm
-        %input.display-order{:type=>"hidden", :name=>"product[#{product.id}]", :id=>"product_#{product.id}", :value=>product.display_order}
-        =product.title
-    %input{type:"submit", class:"btn btn-primary"}
+  -@products.each_pair do |key, items|
+    - color = cycle("","alt")
+    .display-order.col-xs-6
+      %h4= @type.constantize::CATEGORIES[key]
+      -items.each do |product|
+        .well.well-sm{class:color}
+          %input.order{:type=>"hidden", :name=>"product[#{product.id}]", :id=>"product_#{product.id}", :value=>product.display_order}
+          =product.title
+  %input{type:"submit", class:"btn btn-primary"}
+
+:css
+  .alt{background-color:#bbb}
+  form{margin-bottom:75px}
+:javascript
+
+  $(document).ready(function(){
+    $('.display-order').sortable({
+        items: ':not(h4)'
+      }).on('sortupdate', function(){
+      var inputs = $('input.order');
+      $.each(inputs, function(i){     
+        $(inputs[i]).val(i);   
+      });
+    });
+    var inputs = $('input.order');
+    $.each(inputs, function(i){
+      $(inputs[i]).val(i);     
+    });
+  });

@@ -1,4 +1,10 @@
 #dashboard
+  -if flash[:notice] || flash[:error]
+    - alert = (flash[:error].blank?)? "alert-success" : "alert-danger"
+    .col-xs-12.alert{class:alert}
+      %button.close{data:{dismiss:"alert"},type:"button"}×
+      -msg = (flash[:error].blank?)? flash[:notice] : flash[:error]
+      =msg 
   .col-xs-4
     .row
       %h1 Games
