@@ -111,9 +111,11 @@ body
       cursor:pointer;
     }
   }
-  &:hover
-  {
-    cursor:pointer;
+  @media(min-width:768px){
+    &:hover
+    {
+      cursor:pointer;
+    }
   }
 
 }

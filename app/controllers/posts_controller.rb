@@ -8,8 +8,10 @@ class PostsController < ApplicationController
     @featured_pizza = Pizza.where(featured:true).first
     @featured_beer = Beer.where(featured:true).first
     @post = Post.order("created_at DESC").limit(1).first
-    @previous = Post.where("created_at < ?", @post.created_at).order("created_at DESC").limit(1).first
-    @next = Post.where("created_at > ?", @post.created_at).order("created_at ASC").limit(1).first
+    if @post
+      @previous = Post.where("created_at < ?", @post.created_at).order("created_at DESC").limit(1).first
+      @next = Post.where("created_at > ?", @post.created_at).order("created_at ASC").limit(1).first
+    end
     @news = "active"
     render :show
   end

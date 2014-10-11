@@ -67,11 +67,14 @@
 .container.mobile-features.hidden-sm.hidden-md.hidden-lg
   .image-drawer.row.hidden-md.hidden-lg
     .col-sm-4.col-md-4.col-xs-12.featured.pizza{data:{arrow:"13.5%",content:"pizza",shift:"0px"}}
-      %img{src:"/assets/overlay-pizza-sq.png",style:"background-image:url(#{@featured_pizza.image})"}
+      %a{href:pizzas_path}
+        %img{src:"/assets/overlay-pizza-sq.png",style:"background-image:url(#{@featured_pizza.image.feature})"}
     .col-sm-4.col-md-4.col-xs-12.featured.beer{data:{arrow:"49%",content:"beer",shift:"245px"}}
-      %img{src:"/assets/overlay-beer-sq.png",style:"background-image:url(#{@featured_beer.image})"}
+      %a{href:beers_path}
+        %img{src:"/assets/overlay-beer-sq.png",style:"background-image:url(#{@featured_beer.image.feature})"}
     .col-sm-4.col-md-4.col-xs-12.featured.game{data:{arrow:"84.5%",content:"game",shift:"490px"}}
-      %img{src:"/assets/overlay-game-sq.png",style:"background-image:url(#{@featured_game.image.feature})"}
+      %a{href:games_path}
+        %img{src:"/assets/overlay-game-sq.png",style:"background-image:url(#{@featured_game.image.feature})"}
 
 :javascript
   $(document).ready(function(){

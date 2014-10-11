@@ -1,10 +1,14 @@
 .container.news
   .col-md-8.col-sm-8.col-xs-12
-    %h1=@post.title
-    %h3=@post.created_at.strftime("%b %m.%d.%Y")
+    - if @post
+      %h1=@post.title
+      %h3=@post.created_at.strftime("%b %m.%d.%Y")
   .col-md-8.col-sm-8.col-xs-12
     .post_body
-      =raw @post.body
+      - unless @post
+        %p Check back soon for news and updates!
+      - else
+        =raw @post.body
     .col-md-6.col-sm-6.col-xs-6.previous
       - if @previous
         %a{href:news_path(@previous),class:"prev-arrow"}
@@ -16,16 +20,22 @@
   .col-md-4.col-sm-4.col-xs-12.news-features
     .image-drawer.row.hidden-sm.hidden-xs
       .col-sm-12.col-md-12.col-xs-12.featured.pizza
-        %img{src:"/assets/overlay-pizza.png",style:"background-image:url(#{@featured_pizza.image})"}
+        %a{href:pizzas_path}
+          %img{src:"/assets/overlay-pizza.png",style:"background-image:url(#{@featured_pizza.image})"}
       .col-sm-12.col-md-12.col-xs-12.featured.beer
-        %img{src:"/assets/overlay-beer.png",style:"background-image:url(#{@featured_beer.image})"}
+        %a{href:beers_path}
+          %img{src:"/assets/overlay-beer.png",style:"background-image:url(#{@featured_beer.image})"}
       .col-sm-12.col-md-12.col-xs-12.featured.game
-        %img{src:"/assets/overlay-game.png",style:"background-image:url(#{@featured_game.image})"}
+        %a{href:games_path}
+          %img{src:"/assets/overlay-game.png",style:"background-image:url(#{@featured_game.image})"}
     .image-drawer.row.hidden-md.hidden-lg
       .col-sm-12.col-md-12.col-xs-6.featured.pizza
-        %img{src:"/assets/overlay-pizza-sq.png",style:"background-image:url(#{@featured_pizza.image})"}
+        %a{href:pizzas_path}
+          %img{src:"/assets/overlay-pizza-sq.png",style:"background-image:url(#{@featured_pizza.image})"}
       .col-sm-12.col-md-12.col-xs-6.featured.beer
-        %img{src:"/assets/overlay-beer-sq.png",style:"background-image:url(#{@featured_beer.image})"}
+        %a{href:beers_path}
+          %img{src:"/assets/overlay-beer-sq.png",style:"background-image:url(#{@featured_beer.image})"}
       .col-sm-12.col-md-12.col-xs-12.featured.game
-        %img{src:"/assets/overlay-game-sq.png",style:"background-image:url(#{@featured_game.image})"}
+        %a{href:games_path}
+          %img{src:"/assets/overlay-game-sq.png",style:"background-image:url(#{@featured_game.image})"}
 
