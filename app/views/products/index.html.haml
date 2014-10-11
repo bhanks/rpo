@@ -14,6 +14,7 @@
         - items.each do |item|
           .row.item
             %h4= item.title
+            %h5= item.prices.map{|p| ["$#{p.amount}",p.description].join(" / ")}.join(", ")
             %img{src:item.image.small}
             .description
               = raw item.description
