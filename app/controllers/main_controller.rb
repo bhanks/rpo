@@ -5,4 +5,7 @@ class MainController < ApplicationController
     @featured_pizza = Pizza.where(featured:true).first
     @featured_beer = Beer.where(featured:true).first
   end
+  def splash
+    @splash = true
+  end
 end
