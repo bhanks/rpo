@@ -89,6 +89,8 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
   root :to => 'main#splash'
+  get "preview" => "main#index" 
+
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

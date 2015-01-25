@@ -20,51 +20,51 @@
   </div>
 <%- end -%>
 
-<table class="table table-bordered table-striped products-admin">
-  <thead>
-    <tr>
-      <th><%= model_class.human_attribute_name(:title) %></th>
-      <th>Visible</th>
-      <th>Featured</th>
-      <th>Category</th>
-      <th style="min-width:475px"><%=t '.actions', :default => t("helpers.actions") %></th>
-    </tr>
-
-  </thead>
-  <tbody>
-    <% @products.each do |product| %>
+<% @groups.each do |key, products| %>
+  <h3><%= @type.constantize::CATEGORIES[key] %></h3>
+  <table class="table table-bordered table-striped products-admin">
+    <thead>
       <tr>
-        <td class='product-title'><%= link_to product.title, @url_helper.send("edit_#{path_type}_path",product) %></td>
-        <% if product.visible%>
-          <td><span class="glyphicon glyphicon-ok" style="color:green"></span></td>
-        <% else %>
-          <td><span class="glyphicon glyphicon-remove" style="color:red"></span></td>
-        <% end %>
-        <% if product.featured%>
-          <td><span class="glyphicon glyphicon-ok" style="color:green"></span></td>
-        <% else %>
-          <td><span class="glyphicon glyphicon-remove" style="color:red"></span></td>
-        <% end %>
-        <td><%= @type.constantize::CATEGORIES[product.category] %></td>
-
-        <td>
-          <%= link_to t('.edit', :default => t("helpers.links.edit")),
-                      @url_helper.send("edit_#{path_type}_path",product), :class => 'btn btn-mini btn-primary' %>
-          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-                      @url_helper.send("#{path_type}_path",product),
-                      :method => :delete,
-                      data: { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?'))},
-                      :class => 'btn btn-mini btn-danger' %>
-          <%= link_to("View", @url_helper.send("#{path_type}_path", product), {:target=>"_new", :class=>"btn btn-info"})%>
-          <%= link_to("Visible", @url_helper.send("toggle_visible_#{path_type}_path",product),{:class=>"btn btn-warning"}) %>
-          <%= link_to("Featured", @url_helper.send("make_featured_#{path_type}_path",product),{:class=>"btn btn-success"}) %>
-          <% if product.type == "Game" %>
-            <%= link_to("Set High Scores", set_high_scores_game_path(product), {:class=>"btn btn-info"}) %>
-          <% end %>
-        </td>
+        <th><%= model_class.human_attribute_name(:title) %></th>
+        <th>Visible</th>
+        <th>Featured</th>
+        <th style="min-width:475px"><%=t '.actions', :default => t("helpers.actions") %></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
 
+    </thead>
+    <tbody>
+      <% products.each do |product| %>
+        <tr>
+          <td class='product-title'><%= link_to product.title, @url_helper.send("edit_#{path_type}_path",product) %></td>
+          <% if product.visible%>
+            <td><span class="glyphicon glyphicon-ok" style="color:green"></span></td>
+          <% else %>
+            <td><span class="glyphicon glyphicon-remove" style="color:red"></span></td>
+          <% end %>
+          <% if product.featured%>
+            <td><span class="glyphicon glyphicon-ok" style="color:green"></span></td>
+          <% else %>
+            <td><span class="glyphicon glyphicon-remove" style="color:red"></span></td>
+          <% end %>
+
+          <td>
+            <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                        @url_helper.send("edit_#{path_type}_path",product), :class => 'btn btn-mini btn-primary' %>
+            <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                        @url_helper.send("#{path_type}_path",product),
+                        :method => :delete,
+                        data: { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?'))},
+                        :class => 'btn btn-mini btn-danger' %>
+            <%= link_to("View", @url_helper.send("#{path_type}_path", product), {:target=>"_new", :class=>"btn btn-info"})%>
+            <%= link_to("Visible", @url_helper.send("toggle_visible_#{path_type}_path",product),{:class=>"btn btn-warning"}) %>
+            <%= link_to("Featured", @url_helper.send("make_featured_#{path_type}_path",product),{:class=>"btn btn-success"}) %>
+            <% if product.type == "Game" %>
+              <%= link_to("Set High Scores", set_high_scores_game_path(product), {:class=>"btn btn-info"}) %>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>
 

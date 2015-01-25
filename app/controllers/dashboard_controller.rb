@@ -18,7 +18,7 @@ class DashboardController < ApplicationController
    
   def products
     @type = ACTION_TO_TYPE[params[:action]]
-    @products = Product.where(type: @type)
+    @groups = Product.where(type: @type).order(:display_order).group_by(&:category)
     render "products"
   end
 
