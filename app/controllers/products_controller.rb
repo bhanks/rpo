@@ -57,17 +57,13 @@ class ProductsController < ApplicationController
     if @product.save
       if params[@type.downcase.to_sym][:image]
         blob = open(@product.image.url)
-        #img = ::Magick::Image::from_blob(blob.read).first
-        #width = img.columns
-        #height = img.rows
-        width = 251
-        height = 251
+        img = ::Magick::Image::from_blob(blob.read).first
+        width = img.columns
+        height = img.rows
         if(height < 250 || width < 250)
           @product.errors.add :image, "must be at least 250 x 250"
           render action: "edit", :layout => "dashboard"
         else
-        debugger
-          @product.image.recreate_versions!
           redirect_to @url_helper.send("#{@type.downcase.pluralize.to_sym}_dashboard_index_path") 
         end
       else
