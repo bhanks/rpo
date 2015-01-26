@@ -17,8 +17,8 @@ class ImageUploader < CarrierWave::Uploader::Base
   end
   def filename
     if original_filename
-      ext = original_filename.match(/\.(jpg|jpeg|png|gif)/)[1]
-      model.title.downcase.gsub(/\s/,"_")+".#{ext}"
+      #ext = original_filename.match(/\.(jpg|jpeg|png|gif)/)[1]
+      model.title.downcase.gsub(/\s/,"_")+".#{file.extension}"
     end
   end
 

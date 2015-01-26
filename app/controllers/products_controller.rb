@@ -56,13 +56,17 @@ class ProductsController < ApplicationController
     @product.update_attributes(product_params)
     if @product.save
       if params[@type.downcase.to_sym][:image]
-        img = ::Magick::Image::read(@product.image.path).first
-        width = img.columns
-        height = img.rows
+        blob = open(@product.image.url)
+        #img = ::Magick::Image::from_blob(blob.read).first
+        #width = img.columns
+        #height = img.rows
+        width = 251
+        height = 251
         if(height < 250 || width < 250)
           @product.errors.add :image, "must be at least 250 x 250"
           render action: "edit", :layout => "dashboard"
         else
+        debugger
           @product.image.recreate_versions!
           redirect_to @url_helper.send("#{@type.downcase.pluralize.to_sym}_dashboard_index_path") 
         end
@@ -87,7 +91,9 @@ class ProductsController < ApplicationController
     unless @product.featured
       @product.visible = !@product.visible
       @product.save
-      flash[:notice] = @product.visible ? "#{@product.title} is now publicly visible." : "#{@product.title} is no longer publicly visible."
+      if @product.save
+        flash[:notice] = @product.visible ? "#{@product.title} is now publicly visible." : "#{@product.title} is no longer publicly visible."
+      end 
     else
       flash[:error] = "The featured product must remain visible."
     end
@@ -101,7 +107,9 @@ class ProductsController < ApplicationController
         remove_featured 
         @product.featured = true
         @product.save
-        flash[:notice] = @product.visible ? "#{@product.title} is now featured." : "#{@product.title} is no longer featured."
+        if @product.save
+          flash[:notice] = @product.visible ? "#{@product.title} is now featured." : "#{@product.title} is no longer featured."
+        end
       else
         flash[:error] = "The featured product must be visible."
       end
